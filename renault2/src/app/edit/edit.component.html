@@ -1,0 +1,34 @@
+
+
+<input [(ngModel)]="da.id">
+
+<div class="form-group">
+  <label for="description_du_besoin">Description du Besoin:</label>
+  <input [(ngModel)]="da.description_du_besoin" name="description_du_besoin" class="form-control">
+</div>
+<div class="form-group">
+  <label for="devis_propose">Devis proposé:</label>
+  <input [(ngModel)]="da.devis_propose"  name="devis_propose" class="form-control">
+</div>
+<div class="form-group">
+  <label for="direction_exploitant">Direction exploitant:</label>
+  <input [(ngModel)]="da.direction_exploitant" name="direction_exploitant" class="form-control">
+</div>
+<div class="form-group">
+  <label for="service_exploitant">Service exploitant:</label>
+  <input [(ngModel)]="da.service_exploitant" name="service_exploitant" class="form-control">
+</div>
+<div class="form-group">
+  <label for="site_utilisation">Site d'utilisation:</label>
+  <input [(ngModel)]="da.site_utilisation" name="site_utilisation" class="form-control">
+</div>
+<div class="form-group">
+  <label for="validation_du_besoin">Besoin validé:</label>
+  <input [(ngModel)]="da.validation_du_besoin" name="validation_du_besoin" class="form-control">
+</div>
+<div class="form-group">
+  <label for="zone_commentaire">Commentaires:</label>
+  <input [(ngModel)]="da.zone_commentaire" name="zone_commentaire" class="form-control">
+</div >
+
+<button class="btn btn-success" (click)="save()">Enregistrer</button>

@@ -1,0 +1,24 @@
+<div>
+  <table class="table">
+  <tr><th>ID</th>
+    <th>descrition_besoin</th>
+    <th>devis_propose</th>
+    <th>direction_exploitant</th>
+    <th>service_exploitant</th>
+    <th>site_utilisation</th>
+    <th>commentaire</th>
+    <th>version</th>
+  </tr>
+  <tr *ngFor="let da of das">
+<td>{{da.id}}</td>
+<td>{{da.description_du_besoin}}</td>
+<td>{{da.devis_propose}}</td>
+<td>{{da.direction_exploitant}}</td>
+<td>{{da.service_exploitant}}</td>
+<td>{{da.site_utilisation}}</td>
+<td>{{da.zone_commentaire}}</td>
+<td>{{da.version}}</td>
+<td><button (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active" >Editer</button></td>
+  </tr>
+</table>
+</div>

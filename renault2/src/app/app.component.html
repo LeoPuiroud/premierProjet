@@ -1,0 +1,8 @@
+
+ <nav class="navbar">
+    <a class="navbar-toggler" [routerLink]="[ '/home' ]" routerLinkActive="active">Home</a> 
+    <a class="navbar-toggler " [routerLink]="[ '/list' ]" routerLinkActive="active">List</a>
+    <a (click)="newDa()" class="navbar-toggler " [routerLink]="[ '/edit' ]" routerLinkActive="active">Nouvelle DA</a>&nbsp;
+</nav>
+ <router-outlet></router-outlet>
+
