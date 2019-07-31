@@ -1,0 +1,19 @@
+
+<div class="container-fluid" class="text-center">
+    <br>
+    <h1 >Liste des Chefs de projet</h1>
+  <table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Prenom</th>
+  </tr>
+  <tr *ngFor="let c of cdps">
+    <td>{{c.id}}</td>
+    <td>{{c.nom}}</td>
+    <td>{{c.prenom}}</td>
+  </tr>
+  
+  </table>
+  
+  </div>

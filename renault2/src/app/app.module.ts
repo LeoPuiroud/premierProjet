@@ -9,6 +9,11 @@ import { ListComponent } from './List/List.component';
 import { routes } from './routes';
 import { EditComponent } from './edit/edit.component';
 import {FormsModule} from "@angular/forms";  
+import { ListClientComponent } from './ListClient/ListClient.component';
+import { ListCorrespondantComponent } from './ListCorrespondant/ListCorrespondant.component';
+import { ListSpecialisteComponent } from './ListSpecialiste/ListSpecialiste.component';
+import { ListCdpComponent } from './ListCdp/ListCdp.component';
+import { ListPilote_daComponent } from './ListPilote_da/ListPilote_da.component';
 
 
 @NgModule({
@@ -17,13 +22,17 @@ import {FormsModule} from "@angular/forms";
       HomeComponent,
       ListComponent,
       EditComponent,
-      
+      ListClientComponent,
+      ListCorrespondantComponent,
+      ListSpecialisteComponent,
+      ListCdpComponent,
+      ListPilote_daComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       RouterModule.forRoot(routes),
-      FormsModule,
+      FormsModule
    ],
    providers: [],
    bootstrap: [
