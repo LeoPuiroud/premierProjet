@@ -86,10 +86,10 @@ public class DaRestController {
 	// form)
 	
 	@PutMapping("/edit")
-	public ResponseEntity<Void> update(@Valid @RequestBody Da da) { 	
+	public ResponseEntity<Da> update(@Valid @RequestBody Da da) { 	
 		if (da.getId() == null) {
 			daRepository.save(da);
-			return new ResponseEntity<Void>(HttpStatus.CREATED);
+			return new ResponseEntity<Da>(HttpStatus.CREATED);
 		} else {
 			Optional<Da> opt = daRepository.findById(da.getId());
 			if (opt.isPresent()) {
@@ -114,36 +114,38 @@ public class DaRestController {
 				daEnBase.setZone_commentaire(
 						(da.getZone_commentaire() != null ? da.getZone_commentaire() : daEnBase.getZone_commentaire()));
 				daRepository.save(daEnBase);
-				return new ResponseEntity<Void>(HttpStatus.OK);
+				return new ResponseEntity<Da>(HttpStatus.OK);
 
 			} else {
-				Da newDa = new Da();
-				newDa.setCdp((da.getCdp() != null ? da.getCdp() : newDa.getCdp()));
-				newDa.setClient((da.getClient() != null ? da.getClient() : newDa.getClient()));
-				newDa.setSpecialiste((da.getSpecialiste() != null ? da.getSpecialiste() : newDa.getSpecialiste()));
-				newDa.setCorrespondant(
-						(da.getCorrespondant() != null ? da.getCorrespondant() : newDa.getCorrespondant()));
-				newDa.setPilote_da((da.getPilote_da() != null ? da.getPilote_da() : newDa.getPilote_da()));
-				newDa.setDescription_du_besoin((da.getDescription_du_besoin() != null ? da.getDescription_du_besoin()
-						: newDa.getDescription_du_besoin()));
-				newDa.setDevis_propose(
-						(da.getDevis_propose() != null ? da.getDevis_propose() : newDa.getDevis_propose()));
-				newDa.setDirection_exploitant((da.getDirection_exploitant() != null ? da.getDirection_exploitant()
-						: newDa.getDirection_exploitant()));
-				newDa.setService_exploitant((da.getService_exploitant() != null ? da.getService_exploitant()
-						: newDa.getService_exploitant()));
-				newDa.setSite_utilisation(
-						(da.getSite_utilisation() != null ? da.getSite_utilisation() : newDa.getSite_utilisation()));
-				newDa.setZone_commentaire(
-						(da.getZone_commentaire() != null ? da.getZone_commentaire() : newDa.getZone_commentaire()));
-				daRepository.save(newDa);
-				return new ResponseEntity<Void>(HttpStatus.CREATED);
+//				Da newDa = new Da();
+//				newDa.setCdp((da.getCdp() != null ? da.getCdp() : newDa.getCdp()));
+//				newDa.setClient((da.getClient() != null ? da.getClient() : newDa.getClient()));
+//				newDa.setSpecialiste((da.getSpecialiste() != null ? da.getSpecialiste() : newDa.getSpecialiste()));
+//				newDa.setCorrespondant(
+//						(da.getCorrespondant() != null ? da.getCorrespondant() : newDa.getCorrespondant()));
+//				newDa.setPilote_da((da.getPilote_da() != null ? da.getPilote_da() : newDa.getPilote_da()));
+//				newDa.setDescription_du_besoin((da.getDescription_du_besoin() != null ? da.getDescription_du_besoin()
+//						: newDa.getDescription_du_besoin()));
+//				newDa.setDevis_propose(
+//						(da.getDevis_propose() != null ? da.getDevis_propose() : newDa.getDevis_propose()));
+//				newDa.setDirection_exploitant((da.getDirection_exploitant() != null ? da.getDirection_exploitant()
+//						: newDa.getDirection_exploitant()));
+//				newDa.setService_exploitant((da.getService_exploitant() != null ? da.getService_exploitant()
+//						: newDa.getService_exploitant()));
+//				newDa.setSite_utilisation(
+//						(da.getSite_utilisation() != null ? da.getSite_utilisation() : newDa.getSite_utilisation()));
+//				newDa.setZone_commentaire(
+//						(da.getZone_commentaire() != null ? da.getZone_commentaire() : newDa.getZone_commentaire()));
+//				daRepository.save(newDa);
+//				return new ResponseEntity<Da>(HttpStatus.CREATED);
+				daRepository.save(da);
+				return new ResponseEntity<Da>(HttpStatus.CREATED);
 			}
 		}
 	}
 
-	@DeleteMapping("/delete")
-	public ResponseEntity<Void> delete(@RequestParam(name="id") Integer id){
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Void> delete(@PathVariable(name="id") Integer id){
 		Optional<Da> opt = daRepository.findById(id);
 		if (opt.isPresent()) {
 			daRepository.delete(opt.get());

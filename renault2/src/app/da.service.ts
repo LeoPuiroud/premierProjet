@@ -22,7 +22,7 @@ public listAllDa(): Observable<Da[]>{
   return this.http.get<Da[]>(this.url + '/da');
 }
 public findById(id: number): Observable<Da>{
-  return this.http.get<Da>(this.url + "/da/" +id);
+  return this.http.get<Da>(this.url + '/da/' +id);
 }
 
 public save(da: Da): Observable<any>{

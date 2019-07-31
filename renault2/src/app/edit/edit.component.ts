@@ -18,7 +18,6 @@ import { UserService } from '../User.service';
 })
 export class EditComponent implements OnInit {
 
-
   private _da: Da;
   private id: number;
   private _clients: Client[];
@@ -27,12 +26,16 @@ export class EditComponent implements OnInit {
   private _correspondants: Correspondant[];
   private _pilote_das: Pilote_Da[];
 
-  constructor(private daService: DaService, private router: Router,private userService: UserService) { }
+  constructor(private daService: DaService, private router: Router, private userService: UserService) { }
 
 
   ngOnInit() {
     this.selectedDa();
     this.listClient();
+    this.listCdp();
+    this.listCorrespondant();
+    this.listPilote_da();
+    this.listSpecialiste();
   }
 
 
@@ -68,6 +71,11 @@ export class EditComponent implements OnInit {
     }
   }
 
+  public annuler() {
+    this.daService.id = null;
+    this.router.navigate(['home'])
+  }
+
   public save() {
     console.log(this.da);
     console.log(this._da);
@@ -77,10 +85,31 @@ export class EditComponent implements OnInit {
     this.router.navigate(['home'])
   }
 
-  public listClient(){
-    this.userService.listAllClient().subscribe(res=>
-      this._clients=res)
+  public listClient() {
+    this.userService.listAllClient().subscribe(res =>
+      this._clients = res)
   }
+
+  public listCorrespondant() {
+    this.userService.listAllCorrespondant().subscribe(res =>
+      this._correspondants = res)
+  }
+
+  public listCdp() {
+    this.userService.listAllCdp().subscribe(res =>
+      this._cdps = res)
+  }
+
+  public listSpecialiste() {
+    this.userService.listAllSpecialiste().subscribe(res =>
+      this._specialistes = res)
+  }
+
+  public listPilote_da() {
+    this.userService.listAllPilote_da().subscribe(res =>
+      this._pilote_das = res)
+  }
+
 
   get da(): Da {
     return this._da;
@@ -129,5 +158,13 @@ export class EditComponent implements OnInit {
   set pilote_das(value: Pilote_Da[]) {
     this._pilote_das = value;
   }
+
+  // get selectedClient(): Client {
+  //   return this._selectedClient;
+  // }
+
+  // set selectedClient(selectedClient: Client) {
+  //   this._selectedClient = selectedClient;
+  // }
 
 }

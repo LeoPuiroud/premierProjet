@@ -25,4 +25,7 @@ public interface DaRepository extends JpaRepository<Da, Integer>{
 	
 	@Query("select d from Da d left join fetch d.pilote_da where d.pilote_da.id=:id")
 	Optional<List<Da>> findListDaParPilote_da(@Param("id")Integer id);
+	
+	@Query("select d from Da d left join fetch d.client left join fetch d.specialiste left join fetch d.cdp left join fetch d.correspondant left join fetch d.pilote_da")
+	Optional<List<Da>> findListDaWithAllUser();
 }

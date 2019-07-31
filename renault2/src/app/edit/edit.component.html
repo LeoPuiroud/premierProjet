@@ -1,38 +1,70 @@
+<div class="container-fluid" id="base">
 
+  <input type="hidden" [(ngModel)]="da.id">
 
-<input type="hidden" [(ngModel)]="da.id">
-
-
-<div class="form-group">
-    <select ></select>
+  <div class="form-group">
+    <label>Client:</label>
+    <select [(ngModel)]="da.client">
+      <option [ngValue]="client" *ngFor="let client of clients">{{client.prenom}}&nbsp;{{client.nom}}</option>
+    </select>
   </div>
-<div class="form-group">
-  <label for="description_du_besoin">Description du Besoin:</label>
-  <input [(ngModel)]="da.description_du_besoin" name="description_du_besoin" class="form-control">
+  <div class="form-group">
+    <label>Correspondant:</label>
+    <select [(ngModel)]="da.correspondant">
+      <option [ngValue]="correspondant" *ngFor="let correspondant of correspondants">
+        {{correspondant.prenom}}&nbsp;{{correspondant.nom}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Chef de projet:</label>
+    <select [(ngModel)]="da.cdp">
+      <option [ngValue]="cdp" *ngFor="let cdp of cdps">{{cdp.prenom}}&nbsp;{{cdp.nom}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Specialiste:</label>
+    <select [(ngModel)]="da.specialiste">
+      <option [ngValue]="specialiste" *ngFor="let specialiste of specialistes">
+        {{specialiste.prenom}}&nbsp;{{specialiste.nom}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Pilote_Da:</label>
+    <select [(ngModel)]="da.pilote_da">
+      <option [ngValue]="pilote_da" *ngFor="let pilote_da of pilote_das">{{pilote_da.prenom}}&nbsp;{{pilote_da.nom}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="description_du_besoin">Description du Besoin:</label>
+    <input [(ngModel)]="da.description_du_besoin" name="description_du_besoin" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="devis_propose">Devis proposé:</label>
+    <input [(ngModel)]="da.devis_propose" name="devis_propose" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="direction_exploitant">Direction exploitant:</label>
+    <input [(ngModel)]="da.direction_exploitant" name="direction_exploitant" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="service_exploitant">Service exploitant:</label>
+    <input [(ngModel)]="da.service_exploitant" name="service_exploitant" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="site_utilisation">Site d'utilisation:</label>
+    <input [(ngModel)]="da.site_utilisation" name="site_utilisation" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="validation_du_besoin">Besoin validé:</label>&nbsp;
+    <input type="checkbox" [(ngModel)]="da.validation_du_besoin" name="validation_du_besoin">
+  </div>
+  <div class="form-group">
+    <label for="zone_commentaire">Commentaires:</label>
+    <input [(ngModel)]="da.zone_commentaire" name="zone_commentaire" class="form-control">
+  </div>
+  <div class="content">
+    <button class="btn btn-success" (click)="save()">Enregistrer</button>&nbsp;<button class="btn btn-warning"
+      (click)="annuler()">Annuler</button>
+  </div>
 </div>
-<div class="form-group">
-  <label for="devis_propose">Devis proposé:</label>
-  <input [(ngModel)]="da.devis_propose"  name="devis_propose" class="form-control">
-</div>
-<div class="form-group">
-  <label for="direction_exploitant">Direction exploitant:</label>
-  <input [(ngModel)]="da.direction_exploitant" name="direction_exploitant" class="form-control">
-</div>
-<div class="form-group">
-  <label for="service_exploitant">Service exploitant:</label>
-  <input [(ngModel)]="da.service_exploitant" name="service_exploitant" class="form-control">
-</div>
-<div class="form-group">
-  <label for="site_utilisation">Site d'utilisation:</label>
-  <input [(ngModel)]="da.site_utilisation" name="site_utilisation" class="form-control">
-</div>
-<div class="form-group">
-  <label for="validation_du_besoin">Besoin validé:</label>
-  <input [(ngModel)]="da.validation_du_besoin" name="validation_du_besoin" class="form-control">
-</div>
-<div class="form-group">
-  <label for="zone_commentaire">Commentaires:</label>
-  <input [(ngModel)]="da.zone_commentaire" name="zone_commentaire" class="form-control">
-</div >
-
-<button class="btn btn-success" (click)="save()">Enregistrer</button>

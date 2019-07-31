@@ -1,6 +1,7 @@
-<div>
+<div class="container-fluid">
   <table class="table">
-  <tr><th>ID</th>
+  <tr>
+    <th>ID</th>
     <th>Client</th>
     <th>Correspondant</th>
     <th>Chef de projet</th>
@@ -34,7 +35,7 @@
 <td>{{da.site_utilisation}}</td>
 <td>{{da.zone_commentaire}}</td>
 <td>{{da.version}}</td>
-<td><button (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active" >Editer</button></td>
+<td><button class="btn btn-warning" (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active" >Editer</button></td>
 <td><button class="btn btn-danger" (click)="delete(da.id)">X</button></td>  
 </tr>
 </table>
