@@ -1,7 +1,11 @@
 
 
-<input [(ngModel)]="da.id">
+<input type="hidden" [(ngModel)]="da.id">
 
+
+<div class="form-group">
+    <select ></select>
+  </div>
 <div class="form-group">
   <label for="description_du_besoin">Description du Besoin:</label>
   <input [(ngModel)]="da.description_du_besoin" name="description_du_besoin" class="form-control">

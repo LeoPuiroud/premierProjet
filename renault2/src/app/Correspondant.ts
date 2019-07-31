@@ -1,6 +1,6 @@
 import { Roles } from './Roles.enum';
 
-export class Cdp {
+export class Correspondant {
 
     
     private _id: number;
@@ -27,5 +27,4 @@ export class Cdp {
       set nom(value: string) {
         this._nom = value;
       }
-
 }

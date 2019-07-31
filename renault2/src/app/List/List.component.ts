@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Da } from '../Da';
 import { DaService } from '../da.service';
 import { EditComponent } from '../edit/edit.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-List',
@@ -12,7 +13,7 @@ export class ListComponent implements OnInit {
 
   public das: Da[];
 
-  constructor(private daService: DaService) { }
+  constructor(private daService: DaService, private router: Router) { }
 
 
   ngOnInit() {
@@ -28,6 +29,12 @@ public selectedDA(id: number){
   public list(){
     this.daService.listAllDa().subscribe(res=> 
       this.das = res)
+        }
+
+        public delete(id: number) {
+          this.daService.delete(id).subscribe(res=>
+            this.router.navigate(['/home'])
+            );
         }
 
 }

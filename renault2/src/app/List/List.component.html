@@ -1,6 +1,11 @@
 <div>
   <table class="table">
   <tr><th>ID</th>
+    <th>Client</th>
+    <th>Correspondant</th>
+    <th>Chef de projet</th>
+    <th>Specialiste</th>
+    <th>Pilote_DA</th>
     <th>descrition_besoin</th>
     <th>devis_propose</th>
     <th>direction_exploitant</th>
@@ -10,7 +15,18 @@
     <th>version</th>
   </tr>
   <tr *ngFor="let da of das">
+
 <td>{{da.id}}</td>
+<td *ngIf="da.client !== null">{{da.client.id}}</td>
+<td *ngIf="da.client ===null">N/A</td>
+<td *ngIf="da.correspondant !== null">{{da.correspondant.id}}</td>
+<td *ngIf="da.correspondant ===null">N/A</td>
+<td *ngIf="da.cdp !== null">{{da.cdp.id}}</td>
+<td *ngIf="da.cdp ===null">N/A</td>
+<td *ngIf="da.specialiste !== null">{{da.specialiste.id}}</td>
+<td *ngIf="da.specialiste ===null">N/A</td>
+<td *ngIf="da.pilote_da !== null">{{da.pilote_da.id}}</td>
+<td *ngIf="da.pilote_da ===null">N/A</td>
 <td>{{da.description_du_besoin}}</td>
 <td>{{da.devis_propose}}</td>
 <td>{{da.direction_exploitant}}</td>
@@ -19,6 +35,7 @@
 <td>{{da.zone_commentaire}}</td>
 <td>{{da.version}}</td>
 <td><button (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active" >Editer</button></td>
-  </tr>
+<td><button class="btn btn-danger" (click)="delete(da.id)">X</button></td>  
+</tr>
 </table>
 </div>

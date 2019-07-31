@@ -3,13 +3,13 @@ import { Roles } from './Roles.enum';
 export class Client {
 
 
-    /**
-     * Getter $id
-     * @return {number}
-     */
-	public get $id(): number {
-		return this.id;
-	}
+    // /**
+    //  * Getter $id
+    //  * @return {number}
+    //  */
+	// public get $id(): number {
+	// 	return this.id;
+	// }
 
     /**
      * Getter $roles
@@ -35,13 +35,13 @@ export class Client {
 		return this.prenom;
 	}
 
-    /**
-     * Setter $id
-     * @param {number} value
-     */
-	public set $id(value: number) {
-		this.id = value;
-	}
+    // /**
+    //  * Setter $id
+    //  * @param {number} value
+    //  */
+	// public set $id(value: number) {
+	// 	this.id = value;
+	// }
 
     /**
      * Setter $roles
@@ -66,14 +66,30 @@ export class Client {
 	public set $prenom(value: string) {
 		this.prenom = value;
 	}
-    private id: number;
+    private _id: number;
     private roles: Roles[];
-    private nom: string;
+    private _nom: string;
     private prenom: string;
 
+   
 
 	constructor() {
 	}
 
+    get id(): number {
+        return this._id;
+      }
+    
+      set id(value: number) {
+        this._id = value;
+      }
+
+      get nom(): string {
+        return this._nom;
+      }
+    
+      set nom(value: string) {
+        this._nom = value;
+      }
     
 }

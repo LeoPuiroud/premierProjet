@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DaService {
+  [x: string]: any;
 
   private url = 'http://localhost:8080/boot';
 
@@ -27,13 +28,20 @@ public findById(id: number): Observable<Da>{
 public save(da: Da): Observable<any>{
   console.log(da);
   return this.http.put(this.url + '/da/edit',da,this.httpOptions);
-  
 }
+
+public delete(id: number): Observable<any> {
+  return this.http.delete(this.url +'/da/delete/' + id, this.httpOptions);
+}
+
+
 
 public selectedDa(id: number) {
 this._id = id;
 console.log('positionnement de l_id du service');
 }
+
+
 
 get id(): number {
   return this._id;
