@@ -14,6 +14,9 @@ import { ListCorrespondantComponent } from './ListCorrespondant/ListCorrespondan
 import { ListSpecialisteComponent } from './ListSpecialiste/ListSpecialiste.component';
 import { ListCdpComponent } from './ListCdp/ListCdp.component';
 import { ListPilote_daComponent } from './ListPilote_da/ListPilote_da.component';
+import { EditClientComponent } from './EditClient/EditClient.component';
+import { EditCdpComponent } from './EditCdp/EditCdp.component';
+import { EditCorrespondantComponent } from './EditCorrespondant/EditCorrespondant.component';
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import { ListPilote_daComponent } from './ListPilote_da/ListPilote_da.component'
       ListCorrespondantComponent,
       ListSpecialisteComponent,
       ListCdpComponent,
-      ListPilote_daComponent
+      ListPilote_daComponent,
+      EditClientComponent,
+      EditCdpComponent,
+      EditCorrespondantComponent
    ],
    imports: [
       BrowserModule,

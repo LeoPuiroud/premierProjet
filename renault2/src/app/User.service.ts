@@ -16,6 +16,9 @@ export class UserService {
 constructor(private http: HttpClient) { }
 
 private url: 'http://localhost:8080/boot';
+private _selectedClient: Client;
+private _selectedCdp: Cdp;
+private _selectedCorrespondant: Correspondant;
 
 public listAllClient(): Observable<Client[]>{
   return this.http.get<Client[]>('http://localhost:8080/boot/user/client');
@@ -36,5 +39,45 @@ public listAllSpecialiste(): Observable<Specialiste[]>{
 public listAllPilote_da(): Observable<Pilote_Da[]>{
   return this.http.get<Pilote_Da[]>('http://localhost:8080/boot/user/piloteda');
 }
+
+public saveClient(client: Client): Observable<any>{
+  console.log(client);
+  return this.http.put('http://localhost:8080/boot/user/client/edit',client);
+}
+
+public saveCdp(cdp: Cdp): Observable<any>{
+  console.log(cdp);
+  return this.http.put('http://localhost:8080/boot/user/cdp/edit',cdp);
+}
+
+public saveCorrespondant(correspondant: Correspondant): Observable<any>{
+  console.log(correspondant);
+  return this.http.put('http://localhost:8080/boot/user/correspondant/edit',correspondant);
+}
+
+get selectedClient(): Client {
+  return this._selectedClient;
+}
+
+set selectedClient(selectedClient: Client) {
+  this._selectedClient = selectedClient;
+}
+
+get selectedCdp(): Cdp {
+  return this._selectedCdp;
+}
+
+set selectedCdp(selectedCdp: Cdp) {
+  this._selectedCdp = selectedCdp;
+}
+
+get selectedCorrespondant(): Correspondant {
+  return this._selectedCorrespondant;
+}
+
+set selectedCorrespondant(selectedCorrespondant: Correspondant) {
+  this._selectedCorrespondant = selectedCorrespondant;
+}
+
 
 }

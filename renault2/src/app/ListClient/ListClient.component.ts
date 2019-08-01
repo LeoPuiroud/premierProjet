@@ -23,8 +23,13 @@ export class ListClientComponent implements OnInit {
       this.clients = res)
   }
 
+  public selectedClient(client: Client){
+    this.userService.selectedClient = client;
+  }
+
   get getClients(): Client[]{
     return this.clients;
   }
+
   
 }

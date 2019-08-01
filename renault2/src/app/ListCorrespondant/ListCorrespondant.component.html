@@ -13,8 +13,8 @@
   <td>{{c.id}}</td>
   <td>{{c.nom}}</td>
   <td>{{c.prenom}}</td>
+  <td><button class="btn btn-warning" (click)="selectedCorrespondant(c)" [routerLink]="[ '/editCorrespondant' ]" routerLinkActive="active">Editer</button></td>
 </tr>
-
 </table>
-
+<button class="btn btn-success"[routerLink]="[ '/editCorrespondant' ]" routerLinkActive="active">Ajouter correspondant</button>
 </div>

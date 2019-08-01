@@ -22,6 +22,10 @@ export class ListCdpComponent implements OnInit {
       this._cdps = res)
   }
 
+  public selectedCdp(cdp: Cdp){
+    this.userService.selectedCdp = cdp;
+  }
+
   get cdps(): Cdp[] {
     return this._cdps;
   }

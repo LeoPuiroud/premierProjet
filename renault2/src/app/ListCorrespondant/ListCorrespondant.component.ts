@@ -23,6 +23,10 @@ export class ListCorrespondantComponent implements OnInit {
       this._correspondants = res)
   }
 
+  public selectedCorrespondant(correspondant: Correspondant){
+    this.userService.selectedCorrespondant = correspondant;
+  }
+
   get correspondants(): Correspondant[] {
     return this._correspondants;
   }

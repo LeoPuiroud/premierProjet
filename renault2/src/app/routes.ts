@@ -7,6 +7,9 @@ import { ListCorrespondantComponent } from './ListCorrespondant/ListCorrespondan
 import { ListSpecialisteComponent } from './ListSpecialiste/ListSpecialiste.component';
 import { ListCdpComponent } from './ListCdp/ListCdp.component';
 import { ListPilote_daComponent } from './ListPilote_da/ListPilote_da.component';
+import { EditClientComponent } from './EditClient/EditClient.component';
+import { EditCdpComponent } from './EditCdp/EditCdp.component';
+import { EditCorrespondantComponent } from './EditCorrespondant/EditCorrespondant.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -16,6 +19,9 @@ export const routes: Routes = [
   {path: 'listCorrespondant', component: ListCorrespondantComponent},
   {path: 'listSpecialiste', component: ListSpecialisteComponent},
   {path: 'listCdp', component: ListCdpComponent},
-  {path: 'listPilote_da', component: ListPilote_daComponent}
+  {path: 'listPilote_da', component: ListPilote_daComponent},
+  {path: 'editClient', component: EditClientComponent},
+  {path: 'editCdp', component: EditCdpComponent},
+  {path: 'editCorrespondant', component: EditCorrespondantComponent}
 ];
 

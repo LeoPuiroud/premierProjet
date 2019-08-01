@@ -6,13 +6,14 @@
   <th>ID</th>
   <th>Nom</th>
   <th>Prenom</th>
+  <th></th>
 </tr>
 <tr *ngFor="let c of getClients">
   <td>{{c.id}}</td>
   <td>{{c.nom}}</td>
   <td>{{c.prenom}}</td>
+  <td><button class="btn btn-warning" (click)="selectedClient(c)" [routerLink]="[ '/editClient' ]" routerLinkActive="active">Editer</button></td>
 </tr>
-
 </table>
-
+<button class="btn btn-success"[routerLink]="[ '/editClient' ]" routerLinkActive="active">Ajouter Client</button>
 </div>
