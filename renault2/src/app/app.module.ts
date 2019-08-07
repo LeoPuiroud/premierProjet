@@ -17,6 +17,9 @@ import { ListPilote_daComponent } from './ListPilote_da/ListPilote_da.component'
 import { EditClientComponent } from './EditClient/EditClient.component';
 import { EditCdpComponent } from './EditCdp/EditCdp.component';
 import { EditCorrespondantComponent } from './EditCorrespondant/EditCorrespondant.component';
+import { EditSpecialisteComponent } from './EditSpecialiste/EditSpecialiste.component';
+import { EditPilote_daComponent } from './EditPilote_da/EditPilote_da.component';
+import { LoginComponent } from './Login/Login.component';
 
 
 @NgModule({
@@ -32,7 +35,11 @@ import { EditCorrespondantComponent } from './EditCorrespondant/EditCorrespondan
       ListPilote_daComponent,
       EditClientComponent,
       EditCdpComponent,
-      EditCorrespondantComponent
+      EditCorrespondantComponent,
+      EditSpecialisteComponent,
+      EditCdpComponent,
+      EditPilote_daComponent,
+      LoginComponent
    ],
    imports: [
       BrowserModule,

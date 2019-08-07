@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../User.service';
 import { Cdp } from '../Cdp';
+import { AuthenticateUserService } from '../AuthenticateUser.service';
 
 @Component({
   selector: 'app-ListCdp',
@@ -11,9 +12,10 @@ export class ListCdpComponent implements OnInit {
 
   private _cdps: Cdp[];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,private auth: AuthenticateUserService) { }
 
   ngOnInit() {
+    this.auth.canActivate();
     this.listCdp();
   }
 

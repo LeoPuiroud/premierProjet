@@ -19,6 +19,8 @@ private url: 'http://localhost:8080/boot';
 private _selectedClient: Client;
 private _selectedCdp: Cdp;
 private _selectedCorrespondant: Correspondant;
+private _selectedSpecialiste: Specialiste;
+private _selectedPilote_da: Pilote_Da;
 
 public listAllClient(): Observable<Client[]>{
   return this.http.get<Client[]>('http://localhost:8080/boot/user/client');
@@ -55,6 +57,16 @@ public saveCorrespondant(correspondant: Correspondant): Observable<any>{
   return this.http.put('http://localhost:8080/boot/user/correspondant/edit',correspondant);
 }
 
+public saveSpecialiste(specialiste: Specialiste): Observable<any>{
+  console.log(specialiste);
+  return this.http.put('http://localhost:8080/boot/user/specialiste/edit',specialiste);
+}
+
+public savePilote_da(pilote_da: Pilote_Da): Observable<any>{
+  console.log(pilote_da);
+  return this.http.put('http://localhost:8080/boot/user/pilote_da/edit',pilote_da);
+}
+
 get selectedClient(): Client {
   return this._selectedClient;
 }
@@ -79,5 +91,20 @@ set selectedCorrespondant(selectedCorrespondant: Correspondant) {
   this._selectedCorrespondant = selectedCorrespondant;
 }
 
+get selectedSpecialiste(): Specialiste {
+  return this._selectedSpecialiste;
+}
+
+set selectedSpecialiste(selectedSpecialiste: Specialiste) {
+  this._selectedSpecialiste = selectedSpecialiste;
+}
+
+get selectedPilote_da(): Pilote_Da {
+  return this._selectedPilote_da;
+}
+
+set selectedPilote_da(selectedPilote_da: Pilote_Da) {
+  this._selectedPilote_da = selectedPilote_da;
+}
 
 }

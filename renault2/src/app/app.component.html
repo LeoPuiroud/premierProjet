@@ -1,14 +1,33 @@
 <div class="container-fluid">
  <nav class="navbar">
-    <a class="navbar-toggler" [routerLink]="[ '/home' ]" routerLinkActive="active">Home</a> 
-    <a class="navbar-toggler " [routerLink]="[ '/list_da' ]" routerLinkActive="active">List DA</a>
-    <a class="navbar-toggler " [routerLink]="[ '/listClient' ]" routerLinkActive="active">List Client</a>
-    <a class="navbar-toggler " [routerLink]="[ '/listCorrespondant' ]" routerLinkActive="active">List Correspondant</a>
-    <a class="navbar-toggler " [routerLink]="[ '/listSpecialiste' ]" routerLinkActive="active">List Specialiste</a>
-    <a class="navbar-toggler " [routerLink]="[ '/listCdp' ]" routerLinkActive="active">List Chef de projet</a>
-    <a class="navbar-toggler " [routerLink]="[ '/listPilote_da' ]" routerLinkActive="active">List Pilote_DA</a>
-    <a  class="navbar-toggler " [routerLink]="[ '/edit' ]" routerLinkActive="active">Nouvelle DA</a>&nbsp;
-</nav></div>
+    <a class="navbar-toggler btn btn-default" [routerLink]="[ '/home' ]" routerLinkActive="active">Home</a> 
+    <a class="navbar-toggler btn btn-default" [routerLink]="[ '/login' ]" routerLinkActive="active">Login</a>
+    <a class="navbar-toggler btn btn-default" [routerLink]="[ '/mesDa' ]" routerLinkActive="active">Mes demandes d'achats</a>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Demandes d'achats
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" >
+        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/list_da' ]" routerLinkActive="active">Liste des DA</a></li>
+        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/edit' ]" routerLinkActive="active">Créer une nouvelle DA</a></li>
+        </ul>
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Listes des utilisateurs
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" >
+        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listClient' ]" routerLinkActive="active">Liste des clients</a></li>
+        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listCorrespondant' ]" routerLinkActive="active">Liste des correspondants</a></li>
+        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listSpecialiste' ]" routerLinkActive="active">Liste des specialistes</a></li>
+        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listCdp' ]" routerLinkActive="active">Liste des chefs de projet</a></li>
+        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listPilote_da' ]" routerLinkActive="active">Liste des acheteurs</a></li>
+        </ul>
+    </div>
+</nav>
+</div>
 <div>
  <router-outlet></router-outlet>
 </div>

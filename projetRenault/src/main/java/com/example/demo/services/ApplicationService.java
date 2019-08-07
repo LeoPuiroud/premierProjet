@@ -4,6 +4,7 @@ import java.security.Security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.metier.Cdp;
@@ -41,6 +42,9 @@ public class ApplicationService implements CommandLineRunner {
 	@Autowired
 	private Pilote_DaRepository pilote_DaRepository;
 	
+	@Autowired
+	private PasswordEncoder passwordencoder;
+	
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -51,6 +55,8 @@ public class ApplicationService implements CommandLineRunner {
 			
 			Client c = new Client();
 			c.setPrenom("toto");
+			c.setPassword(passwordencoder.encode("toto"));
+			c.setUsername("toto");
 			c.setNom("legrand");
 			c.addRoles(Roles.ROLE_CLIENT);
 			clientrepo.save(c);

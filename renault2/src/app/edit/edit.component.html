@@ -4,33 +4,33 @@
 
   <div class="form-group">
     <label>Client:</label>
-    <select [(ngModel)]="da.client">
+    <select [(ngModel)]="da.client" class="form-control">
       <option [ngValue]="client" *ngFor="let client of clients">{{client.prenom}}&nbsp;{{client.nom}}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Correspondant:</label>
-    <select [(ngModel)]="da.correspondant">
+    <select [(ngModel)]="da.correspondant" class="form-control">
       <option [ngValue]="correspondant" *ngFor="let correspondant of correspondants">
         {{correspondant.prenom}}&nbsp;{{correspondant.nom}}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Chef de projet:</label>
-    <select [(ngModel)]="da.cdp">
+    <select [(ngModel)]="da.cdp" class="form-control">
       <option [ngValue]="cdp" *ngFor="let cdp of cdps">{{cdp.prenom}}&nbsp;{{cdp.nom}}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Specialiste:</label>
-    <select [(ngModel)]="da.specialiste">
+    <select [(ngModel)]="da.specialiste" class="form-control">
       <option [ngValue]="specialiste" *ngFor="let specialiste of specialistes">
         {{specialiste.prenom}}&nbsp;{{specialiste.nom}}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Pilote_Da:</label>
-    <select [(ngModel)]="da.pilote_da">
+    <select [(ngModel)]="da.pilote_da" class="form-control">
       <option [ngValue]="pilote_da" *ngFor="let pilote_da of pilote_das">{{pilote_da.prenom}}&nbsp;{{pilote_da.nom}}
       </option>
     </select>
@@ -61,7 +61,7 @@
   </div>
   <div class="form-group">
     <label for="zone_commentaire">Commentaires:</label>
-    <input [(ngModel)]="da.zone_commentaire" name="zone_commentaire" class="form-control">
+    <textarea rows="5" [(ngModel)]="da.zone_commentaire" name="zone_commentaire" class="form-control"></textarea>
   </div>
   <div class="content">
     <button class="btn btn-success" (click)="save()">Enregistrer</button>&nbsp;<button class="btn btn-warning"

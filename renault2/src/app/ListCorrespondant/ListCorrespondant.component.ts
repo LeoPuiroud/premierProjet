@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../User.service';
 import { Correspondant } from '../Correspondant';
 import { Router } from '@angular/router';
+import { AuthenticateUserService } from '../AuthenticateUser.service';
 
 @Component({
   selector: 'app-ListCorrespondant',
@@ -12,9 +13,10 @@ export class ListCorrespondantComponent implements OnInit {
 
   private _correspondants: Correspondant[];
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router,private auth: AuthenticateUserService) { }
 
   ngOnInit() {
+    this.auth.canActivate();
     this.listCorrespondant();
   }
 

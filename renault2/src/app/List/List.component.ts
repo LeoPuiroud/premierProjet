@@ -3,6 +3,7 @@ import { Da } from '../Da';
 import { DaService } from '../da.service';
 import { EditComponent } from '../edit/edit.component';
 import { Router } from '@angular/router';
+import { AuthenticateUserService } from '../AuthenticateUser.service';
 
 @Component({
   selector: 'app-List',
@@ -13,10 +14,11 @@ export class ListComponent implements OnInit {
 
   public das: Da[];
 
-  constructor(private daService: DaService, private router: Router) { }
+  constructor(private daService: DaService, private router: Router, private auth: AuthenticateUserService) { }
 
 
   ngOnInit() {
+    this.auth.canActivate()
     this.list();
   }
 

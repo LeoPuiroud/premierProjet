@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../User.service';
 import { Router } from '@angular/router';
 import { Client } from '../Client';
+import { AuthenticateUserService } from '../AuthenticateUser.service';
 
 @Component({
   selector: 'app-ListClient',
@@ -12,9 +13,10 @@ export class ListClientComponent implements OnInit {
 
   private clients: Client[];
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router,private auth: AuthenticateUserService) { }
 
   ngOnInit() {
+    this.auth.canActivate();
     this.listClient();
   }
 

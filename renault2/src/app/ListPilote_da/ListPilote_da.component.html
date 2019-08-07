@@ -7,13 +7,14 @@
     <th>ID</th>
     <th>Nom</th>
     <th>Prenom</th>
+    <th></th>
   </tr>
-  <tr *ngFor="let c of pilote_das">
-    <td>{{c.id}}</td>
-    <td>{{c.nom}}</td>
-    <td>{{c.prenom}}</td>
+  <tr *ngFor="let s of pilote_das">
+    <td>{{s.id}}</td>
+    <td>{{s.nom}}</td>
+    <td>{{s.prenom}}</td>
+    <td><button class="btn btn-warning" (click)="selectedPilote_da(s)" [routerLink]="[ '/editPilote_da' ]" routerLinkActive="active">Editer</button></td>
   </tr>
-  
   </table>
-  
+  <button class="btn btn-success"[routerLink]="[ '/editPilote_da' ]" routerLinkActive="active">Ajouter Specialiste</button>
   </div>
