@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Da } from './Da';
 import { Observable } from 'rxjs';
+import { AuthenticateUserService } from './AuthenticateUser.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ export class DaService {
   private httpHeaders: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   private httpOptions: any = {headers: this.httpHeaders};
 
-constructor(private http: HttpClient) { }
+constructor(private http: HttpClient, private auth: AuthenticateUserService) { }
 
 public listAllDa(): Observable<Da[]>{
   return this.http.get<Da[]>(this.url + '/da');
@@ -35,10 +37,13 @@ public delete(id: number): Observable<any> {
 }
 
 
-
 public selectedDa(id: number) {
 this._id = id;
 console.log('positionnement de l_id du service');
+}
+
+public MesDa(): Observable<any>{
+return this.http.get(this.url + '/da/client/' +this.auth.token.id);
 }
 
 

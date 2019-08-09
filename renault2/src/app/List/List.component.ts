@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.auth.canActivate()
+    this.auth.adminCanActivate();
     this.list();
   }
 

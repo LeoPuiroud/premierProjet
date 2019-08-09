@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Specialiste } from '../Specialiste';
 import { UserService } from '../User.service';
 import { Router } from '@angular/router';
+import { AuthenticateUserService } from '../AuthenticateUser.service';
+import { Roles } from '../Roles.enum';
 
 @Component({
   selector: 'app-EditSpecialiste',
@@ -11,10 +13,12 @@ import { Router } from '@angular/router';
 export class EditSpecialisteComponent implements OnInit {
 
   private _specialiste: Specialiste;
+  private _selectedRole: Roles;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private auth: AuthenticateUserService) { }
 
   ngOnInit() {
+    this.auth.adminCanActivate();
     this.selectedSpecialiste();
   }
 
@@ -33,8 +37,14 @@ export class EditSpecialisteComponent implements OnInit {
   public save() {
     console.log(this._specialiste)
     this.userService.saveSpecialiste(this._specialiste).subscribe(res=>
-      this._specialiste = null
+      this._specialiste = null,
+      this.userService.selectedSpecialiste = null
       );
+      this.router.navigate(['home'])
+    }
+
+    public annuler() {
+      this.userService.selectedSpecialiste = null
       this.router.navigate(['home'])
     }
 
@@ -44,6 +54,23 @@ export class EditSpecialisteComponent implements OnInit {
   
   set specialiste(specialiste: Specialiste) {
     this._specialiste = specialiste;
+  }
+
+  get selectedRole(): Roles {
+    return this._selectedRole;
+  }
+  
+  set selectedRole(selectedRole: Roles) {
+    this._selectedRole = selectedRole;
+  }
+
+  public addRole(){
+    this._specialiste.roles.push(this._selectedRole);
+
+  }
+
+  public deleteRole(){
+    this._specialiste.roles = new Array;
   }
 
 }

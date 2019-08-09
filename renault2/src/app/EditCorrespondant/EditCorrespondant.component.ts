@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../User.service';
 import { Router } from '@angular/router';
 import { Correspondant } from '../Correspondant';
+import { AuthenticateUserService } from '../AuthenticateUser.service';
+import { Roles } from '../Roles.enum';
 
 @Component({
   selector: 'app-EditCorrespondant',
@@ -11,10 +13,12 @@ import { Correspondant } from '../Correspondant';
 export class EditCorrespondantComponent implements OnInit {
 
 private _correspondant: Correspondant;
+private _selectedRole: Roles;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private auth: AuthenticateUserService) { }
 
   ngOnInit() {
+    this.auth.adminCanActivate();
     this.selectedCorrespondant();
   }
 
@@ -33,8 +37,14 @@ private _correspondant: Correspondant;
   public save() {
     console.log(this._correspondant)
     this.userService.saveCorrespondant(this._correspondant).subscribe(res=>
-      this._correspondant = null
+      this._correspondant = null,
+      this.userService.selectedCorrespondant = null
       );
+      this.router.navigate(['home'])
+    }
+
+    public annuler() {
+      this.userService.selectedCorrespondant = null;
       this.router.navigate(['home'])
     }
 
@@ -44,6 +54,23 @@ private _correspondant: Correspondant;
   
   set correspondant(correspondant: Correspondant) {
     this._correspondant = correspondant;
+  }
+
+  get selectedRole(): Roles {
+    return this._selectedRole;
+  }
+  
+  set selectedRole(selectedRole: Roles) {
+    this._selectedRole = selectedRole;
+  }
+
+  public addRole(){
+    this._correspondant.roles.push(this._selectedRole);
+
+  }
+
+  public deleteRole(){
+    this._correspondant.roles = new Array;
   }
 
 }

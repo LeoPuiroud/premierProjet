@@ -9,12 +9,29 @@ import { User } from './User';
 })
 export class AuthenticateUserService {
 
-  private _token: any;
+  private _token: User;
+  private _adminToken = false;
 
 constructor(private router: Router,private loginService: LoginService) { }
 
  public canActivate(){
-  if (this.token != null){
+  if (this._token != null){
+    return true;
+  }
+  else {
+    this.router.navigate(['/login']);
+    return false;
+  }
+}
+
+public adminCanActivate(){
+  console.log(this._token);
+  this.token.roles.forEach(role => {
+    if (role == "ROLE_ADMIN"){
+      this._adminToken = true;
+    }
+  });
+  if (this._adminToken){
     return true;
   }
   else {
@@ -26,8 +43,8 @@ constructor(private router: Router,private loginService: LoginService) { }
   public login(user: User){
 this.loginService.login(user).subscribe((res=>{
   if (res){
-    this._token = btoa(user.username + ':' + user.password);
-    this.router.navigate(['/list_da']);
+    this._token = res;
+    this.router.navigate(['/mesDa']);
   }
   else{
     console.log(btoa(user.password))
@@ -46,6 +63,14 @@ get token(): any {
 
 set token(token: any) {
   this._token = token;
+}
+
+get adminToken(): any {
+  return this._adminToken;
+}
+
+set adminToken(adminToken: any) {
+  this._adminToken = adminToken;
 }
 
 }

@@ -2,6 +2,7 @@
  <nav class="navbar">
     <a class="navbar-toggler btn btn-default" [routerLink]="[ '/home' ]" routerLinkActive="active">Home</a> 
     <a class="navbar-toggler btn btn-default" [routerLink]="[ '/login' ]" routerLinkActive="active">Login</a>
+    <a class="navbar-toggler btn btn-default" [routerLink]="[ '/login' ]" routerLinkActive="active" (click)="logout()">Logout</a>
     <a class="navbar-toggler btn btn-default" [routerLink]="[ '/mesDa' ]" routerLinkActive="active">Mes demandes d'achats</a>
     <div class="dropdown">
         <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -31,4 +32,8 @@
 <div>
  <router-outlet></router-outlet>
 </div>
+<div *ngIf="connectedUser != null">
+    {{connectedUser.roles}}
+</div>
+
 

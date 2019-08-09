@@ -3,6 +3,8 @@ import { Client } from '../Client';
 import { UserService } from '../User.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthenticateUserService } from '../AuthenticateUser.service';
+import { Roles } from '../Roles.enum';
 
 @Component({
   selector: 'app-EditClient',
@@ -12,11 +14,13 @@ import { Observable } from 'rxjs';
 export class EditClientComponent implements OnInit {
 
   private _client: Client;
+  private _selectedRole: Roles;
 
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private auth: AuthenticateUserService) { }
 
   ngOnInit() {
+    this.auth.adminCanActivate();
     this.selectedClient();
   }
 
@@ -35,8 +39,14 @@ export class EditClientComponent implements OnInit {
   public save() {
     console.log(this._client)
     this.userService.saveClient(this._client).subscribe(res=>
-      this._client = null
+      this._client = null,
+      this.userService.selectedClient = null
       );
+      this.router.navigate(['home'])
+    }
+
+    public annuler() {
+      this.userService.selectedClient = null;
       this.router.navigate(['home'])
     }
 
@@ -46,6 +56,23 @@ export class EditClientComponent implements OnInit {
   
   set client(client: Client) {
     this._client = client;
+  }
+
+  get selectedRole(): Roles {
+    return this._selectedRole;
+  }
+  
+  set selectedRole(selectedRole: Roles) {
+    this._selectedRole = selectedRole;
+  }
+
+  public addRole(){
+    this._client.roles.push(this._selectedRole);
+
+  }
+
+  public deleteRole(){
+    this._client.roles = new Array;
   }
 
 

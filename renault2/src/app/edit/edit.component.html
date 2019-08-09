@@ -3,33 +3,33 @@
   <input type="hidden" [(ngModel)]="da.id">
 
   <div class="form-group">
-    <label>Client:</label>
+    <label>Client lié à la demande d'achat: <b>{{da.client.prenom}}&nbsp;{{da.client.nom}}</b></label>
     <select [(ngModel)]="da.client" class="form-control">
       <option [ngValue]="client" *ngFor="let client of clients">{{client.prenom}}&nbsp;{{client.nom}}</option>
     </select>
   </div>
   <div class="form-group">
-    <label>Correspondant:</label>
+    <label>Correspondant lié à la demande d'achat: <b>{{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</b></label>
     <select [(ngModel)]="da.correspondant" class="form-control">
       <option [ngValue]="correspondant" *ngFor="let correspondant of correspondants">
         {{correspondant.prenom}}&nbsp;{{correspondant.nom}}</option>
     </select>
   </div>
   <div class="form-group">
-    <label>Chef de projet:</label>
+    <label>Chef de projet lié à la demande d'achat: <b>{{da.cdp.prenom}}&nbsp;{{da.cdp.nom}}</b></label>
     <select [(ngModel)]="da.cdp" class="form-control">
       <option [ngValue]="cdp" *ngFor="let cdp of cdps">{{cdp.prenom}}&nbsp;{{cdp.nom}}</option>
     </select>
   </div>
   <div class="form-group">
-    <label>Specialiste:</label>
+    <label>Specialiste lié à la demande d'achat: <b>{{da.specialiste.prenom}}&nbsp;{{da.specialiste.nom}}</b></label>
     <select [(ngModel)]="da.specialiste" class="form-control">
       <option [ngValue]="specialiste" *ngFor="let specialiste of specialistes">
         {{specialiste.prenom}}&nbsp;{{specialiste.nom}}</option>
     </select>
   </div>
   <div class="form-group">
-    <label>Pilote_Da:</label>
+    <label>Acheteur lié à la demande d'achat: <b>{{da.pilote_da.prenom}}&nbsp;{{da.pilote_da.nom}}</b></label>
     <select [(ngModel)]="da.pilote_da" class="form-control">
       <option [ngValue]="pilote_da" *ngFor="let pilote_da of pilote_das">{{pilote_da.prenom}}&nbsp;{{pilote_da.nom}}
       </option>

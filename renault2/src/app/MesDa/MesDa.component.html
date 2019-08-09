@@ -1,6 +1,8 @@
-<div class="container-fluid" class="text-center">
+<div *ngIf="!mesDa">Pas de demandes d'achats</div>
+
+<div class="container-fluid" class="text-center" *ngIf="mesDa">
   <br>
-  <h1>Liste des demandes d'achats</h1>
+  <h1>Mes demandes d'achats</h1>
   <table class="table">
   <tr>
     <th>ID</th>
@@ -19,7 +21,7 @@
     <th></th>
     <th></th>
   </tr>
-  <tr *ngFor="let da of das">
+  <tr *ngFor="let da of mesDa" >
 
 <td>{{da.id}}</td>
 <td *ngIf="da.client !== null">{{da.client.prenom}}&nbsp;{{da.client.nom}}</td>
@@ -39,8 +41,7 @@
 <td>{{da.site_utilisation}}</td>
 <td>{{da.zone_commentaire}}</td>
 <td>{{da.version}}</td>
-<td><button class="btn btn-warning" (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active" >Editer</button></td>
-<td><button class="btn btn-danger" (click)="delete(da.id)">X</button></td>  
+<td><button class="btn btn-warning" (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active" >Editer</button></td>  
 </tr>
 </table>
 </div>

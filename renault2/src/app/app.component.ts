@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticateUserService } from './AuthenticateUser.service';
 
 
 @Component({
@@ -8,6 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  constructor(){}
+  constructor(private auth: AuthenticateUserService){}
+
+  public connectedUser: any;
+
+
+public logout(){
+  this.auth.token = null;
+  this.auth.adminToken = null;
+}
 
 }

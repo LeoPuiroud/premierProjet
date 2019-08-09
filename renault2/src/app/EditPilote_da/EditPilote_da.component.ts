@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Pilote_Da } from '../Pilote_Da';
 import { UserService } from '../User.service';
 import { Router } from '@angular/router';
+import { AuthenticateUserService } from '../AuthenticateUser.service';
+import { Roles } from '../Roles.enum';
 
 @Component({
   selector: 'app-EditPilote_da',
@@ -11,10 +13,12 @@ import { Router } from '@angular/router';
 export class EditPilote_daComponent implements OnInit {
 
   private _pilote_da: Pilote_Da;
+  private _selectedRole: Roles;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private auth: AuthenticateUserService) { }
 
   ngOnInit() {
+    this.auth.adminCanActivate();
     this.selectedPilote_da();
   }
 
@@ -32,9 +36,15 @@ export class EditPilote_daComponent implements OnInit {
   public save(){
     console.log(this._pilote_da)
     this.userService.savePilote_da(this._pilote_da).subscribe(res=>
-      this._pilote_da = null
+      this._pilote_da = null,
+      this.userService.selectedPilote_da = null
       );
       this.router.navigate(['home']);
+  }
+
+  public annuler() {
+    this.userService.selectedPilote_da = null;
+    this.router.navigate(['home'])
   }
 
   get pilote_da(): Pilote_Da {
@@ -44,5 +54,23 @@ export class EditPilote_daComponent implements OnInit {
   set pilote_da(pilote_da: Pilote_Da) {
     this._pilote_da = pilote_da;
   }
+
+  get selectedRole(): Roles {
+    return this._selectedRole;
+  }
+  
+  set selectedRole(selectedRole: Roles) {
+    this._selectedRole = selectedRole;
+  }
+
+  public addRole(){
+    this._pilote_da.roles.push(this._selectedRole);
+
+  }
+
+  public deleteRole(){
+    this._pilote_da.roles = new Array;
+  }
+
 
 }

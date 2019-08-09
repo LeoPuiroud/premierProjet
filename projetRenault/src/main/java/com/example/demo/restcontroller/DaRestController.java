@@ -55,7 +55,12 @@ public class DaRestController {
 	// Get the Da list by a client Id
 	@GetMapping(value = { "/client/{id}" })
 	public ResponseEntity<List<Da>> findAllByClient(@PathVariable(name = "id") Integer id) {
-		return new ResponseEntity<List<Da>>(daRepository.findAllByClient(id).get(), HttpStatus.OK);
+		Optional<List<Da>> opt = daRepository.findAllByClient(id);
+		if (opt.isPresent()) {
+		return new ResponseEntity<List<Da>>(opt.get(), HttpStatus.OK);}
+		else {
+			return new ResponseEntity<List<Da>>(opt.get(), HttpStatus.NO_CONTENT);
+		}
 	}
 
 	// Get the Da list by a specialiste Id

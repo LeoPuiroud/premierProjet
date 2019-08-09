@@ -9,6 +9,7 @@ import { Correspondant } from '../Correspondant';
 import { Pilote_Da } from '../Pilote_Da';
 import { Cdp } from '../Cdp';
 import { UserService } from '../User.service';
+import { AuthenticateUserService } from '../AuthenticateUser.service';
 
 
 @Component({
@@ -26,10 +27,11 @@ export class EditComponent implements OnInit {
   private _correspondants: Correspondant[];
   private _pilote_das: Pilote_Da[];
 
-  constructor(private daService: DaService, private router: Router, private userService: UserService) { }
+  constructor(private daService: DaService, private router: Router, private userService: UserService, private auth: AuthenticateUserService) { }
 
 
   ngOnInit() {
+    this.auth.canActivate();
     this.selectedDa();
     this.listClient();
     this.listCdp();
@@ -40,7 +42,6 @@ export class EditComponent implements OnInit {
 
 
   public selectedDa() {
-
     if (this.daService.id != null) {
       this.id = this.daService.id;
       this.setDaToEdit();

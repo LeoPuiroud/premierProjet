@@ -20,6 +20,7 @@ import { EditCorrespondantComponent } from './EditCorrespondant/EditCorrespondan
 import { EditSpecialisteComponent } from './EditSpecialiste/EditSpecialiste.component';
 import { EditPilote_daComponent } from './EditPilote_da/EditPilote_da.component';
 import { LoginComponent } from './Login/Login.component';
+import { MesDaComponent } from './MesDa/MesDa.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { LoginComponent } from './Login/Login.component';
       EditSpecialisteComponent,
       EditCdpComponent,
       EditPilote_daComponent,
-      LoginComponent
+      LoginComponent,
+      MesDaComponent
    ],
    imports: [
       BrowserModule,

@@ -5,10 +5,11 @@ export class Client {
 
     
     public id: number;
-    public roles: Roles[];
-    public nom: string;
-    public prenom: string;
-
+  public roles: Roles[] = new Array;
+  public nom: string;
+  public prenom: string;
+  public username: string;
+  public password: string;
    
 
 	constructor() {

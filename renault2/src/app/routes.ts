@@ -13,6 +13,7 @@ import { EditCorrespondantComponent } from './EditCorrespondant/EditCorrespondan
 import { EditSpecialisteComponent } from './EditSpecialiste/EditSpecialiste.component';
 import { EditPilote_daComponent } from './EditPilote_da/EditPilote_da.component';
 import { LoginComponent } from './Login/Login.component';
+import { MesDaComponent } from './MesDa/MesDa.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -28,6 +29,7 @@ export const routes: Routes = [
   {path: 'editCorrespondant', component: EditCorrespondantComponent},
   {path: 'editSpecialiste', component: EditSpecialisteComponent},
   {path: 'editPilote_da', component: EditPilote_daComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'mesDa', component: MesDaComponent}
 ];
 

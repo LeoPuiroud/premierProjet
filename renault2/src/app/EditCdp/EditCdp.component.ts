@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Cdp } from '../Cdp';
 import { UserService } from '../User.service';
 import { Router } from '@angular/router';
+import { AuthenticateUserService } from '../AuthenticateUser.service';
+import { Roles } from '../Roles.enum';
 
 @Component({
   selector: 'app-EditCdp',
@@ -11,10 +13,12 @@ import { Router } from '@angular/router';
 export class EditCdpComponent implements OnInit {
 
   private _cdp: Cdp;
+  private _selectedRole: Roles;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private auth: AuthenticateUserService) { }
 
   ngOnInit() {
+    this.auth.adminCanActivate();
     this.selectedCdp();
   }
 
@@ -32,9 +36,15 @@ export class EditCdpComponent implements OnInit {
   public save(){
     console.log(this._cdp)
     this.userService.saveCdp(this._cdp).subscribe(res=>
-      this._cdp = null
+      this._cdp = null,
+      this.userService.selectedCdp = null
       );
       this.router.navigate(['home']);
+  }
+
+  public annuler() {
+    this.userService.selectedCdp = null;
+    this.router.navigate(['home'])
   }
 
   get cdp(): Cdp {
@@ -43,6 +53,23 @@ export class EditCdpComponent implements OnInit {
   
   set cdp(cdp: Cdp) {
     this._cdp = cdp;
+  }
+
+  get selectedRole(): Roles {
+    return this._selectedRole;
+  }
+  
+  set selectedRole(selectedRole: Roles) {
+    this._selectedRole = selectedRole;
+  }
+
+  public addRole(){
+    this._cdp.roles.push(this._selectedRole);
+
+  }
+
+  public deleteRole(){
+    this._cdp.roles = new Array;
   }
 
 }

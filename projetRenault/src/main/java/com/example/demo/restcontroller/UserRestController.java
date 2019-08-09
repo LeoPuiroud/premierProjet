@@ -117,6 +117,7 @@ public class UserRestController {
 	@PutMapping("/client/edit")
 	public ResponseEntity<Void> editClient(@RequestBody Client client) {
 		if (client.getId() == null) {
+			client.setPassword(passwordEncoder.encode(client.getPassword()));
 			clientRepository.save(client);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);
 		} else {
@@ -126,9 +127,12 @@ public class UserRestController {
 				ceb.setNom((client.getNom() != null ? client.getNom() : ceb.getNom()));
 				ceb.setPrenom((client.getPrenom() != null ? client.getPrenom() : ceb.getPrenom()));
 				ceb.setRoles((client.getRoles() != null ? client.getRoles() : ceb.getRoles()));
+				ceb.setPassword((client.getPassword() != null ? passwordEncoder.encode(client.getPassword()) : ceb.getPassword()));
+				ceb.setUsername((client.getUsername() != null ? client.getUsername() : ceb.getUsername()));
 				clientRepository.save(ceb);
 				return new ResponseEntity<Void>(HttpStatus.OK);
 			} else {
+				client.setPassword(passwordEncoder.encode(client.getPassword()));
 				clientRepository.save(client);
 				return new ResponseEntity<Void>(HttpStatus.CREATED);
 			}
@@ -140,6 +144,7 @@ public class UserRestController {
 	@PutMapping("/cdp/edit")
 	public ResponseEntity<Void> editCdp(@RequestBody Cdp cdp) {
 		if (cdp.getId() == null) {
+			cdp.setPassword(passwordEncoder.encode(cdp.getPassword()));
 			cdpRepository.save(cdp);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);
 		} else {
@@ -149,9 +154,16 @@ public class UserRestController {
 				ceb.setNom((cdp.getNom() != null ? cdp.getNom() : ceb.getNom()));
 				ceb.setPrenom((cdp.getPrenom() != null ? cdp.getPrenom() : ceb.getPrenom()));
 				ceb.setRoles((cdp.getRoles() != null ? cdp.getRoles() : ceb.getRoles()));
+				if (cdp.getPassword().equals(ceb.getPassword())) {	
+				}
+				else {
+					ceb.setPassword((cdp.getPassword() != null ? passwordEncoder.encode(cdp.getPassword()) : ceb.getPassword()));
+				}
+				ceb.setUsername((cdp.getUsername() != null ? cdp.getUsername() : ceb.getUsername()));
 				cdpRepository.save(ceb);
 				return new ResponseEntity<Void>(HttpStatus.OK);
 			} else {
+				cdp.setPassword(passwordEncoder.encode(cdp.getPassword()));
 				cdpRepository.save(cdp);
 				return new ResponseEntity<Void>(HttpStatus.CREATED);
 			}
@@ -161,8 +173,9 @@ public class UserRestController {
 
 	// créer et éditer un correspondant
 	@PutMapping("/correspondant/edit")
-	public ResponseEntity<Void> editCdp(@RequestBody Correspondant correspondant) {
+	public ResponseEntity<Void> editCorrespondant(@RequestBody Correspondant correspondant) {
 		if (correspondant.getId() == null) {
+			correspondant.setPassword(passwordEncoder.encode(correspondant.getPassword()));
 			correspondantRepository.save(correspondant);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);
 		} else {
@@ -172,9 +185,12 @@ public class UserRestController {
 				ceb.setNom((correspondant.getNom() != null ? correspondant.getNom() : ceb.getNom()));
 				ceb.setPrenom((correspondant.getPrenom() != null ? correspondant.getPrenom() : ceb.getPrenom()));
 				ceb.setRoles((correspondant.getRoles() != null ? correspondant.getRoles() : ceb.getRoles()));
+				ceb.setPassword((correspondant.getPassword() != null ? passwordEncoder.encode(correspondant.getPassword()) : ceb.getPassword()));
+				ceb.setUsername((correspondant.getUsername() != null ? correspondant.getUsername() : ceb.getUsername()));
 				correspondantRepository.save(ceb);
 				return new ResponseEntity<Void>(HttpStatus.OK);
 			} else {
+				correspondant.setPassword(passwordEncoder.encode(correspondant.getPassword()));
 				correspondantRepository.save(correspondant);
 				return new ResponseEntity<Void>(HttpStatus.CREATED);
 			}
@@ -186,6 +202,7 @@ public class UserRestController {
 	@PutMapping("/specialiste/edit")
 	public ResponseEntity<Void> editCdp(@RequestBody Specialiste specialiste) {
 		if (specialiste.getId() == null) {
+			specialiste.setPassword(passwordEncoder.encode(specialiste.getPassword()));
 			specialisteRepository.save(specialiste);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);
 		} else {
@@ -195,10 +212,13 @@ public class UserRestController {
 				seb.setNom((specialiste.getNom() != null ? specialiste.getNom() : seb.getNom()));
 				seb.setPrenom((specialiste.getPrenom() != null ? specialiste.getPrenom() : seb.getPrenom()));
 				seb.setRoles((specialiste.getRoles() != null ? specialiste.getRoles() : seb.getRoles()));
+				seb.setPassword((specialiste.getPassword() != null ? passwordEncoder.encode(specialiste.getPassword()) : seb.getPassword()));
+				seb.setUsername((specialiste.getUsername() != null ? specialiste.getUsername() : seb.getUsername()));
 				specialisteRepository.save(seb);
 				return new ResponseEntity<Void>(HttpStatus.OK);
 			} else {
 				specialisteRepository.save(specialiste);
+				specialiste.setPassword(passwordEncoder.encode(specialiste.getPassword()));
 				return new ResponseEntity<Void>(HttpStatus.CREATED);
 			}
 		}
@@ -209,6 +229,7 @@ public class UserRestController {
 	@PutMapping("/pilote_da/edit")
 	public ResponseEntity<Void> editCdp(@RequestBody Pilote_Da pilote_da) {
 		if (pilote_da.getId() == null) {
+			pilote_da.setPassword(passwordEncoder.encode(pilote_da.getPassword()));
 			pilote_DaRepository.save(pilote_da);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);
 		} else {
@@ -218,10 +239,13 @@ public class UserRestController {
 				peb.setNom((pilote_da.getNom() != null ? pilote_da.getNom() : peb.getNom()));
 				peb.setPrenom((pilote_da.getPrenom() != null ? pilote_da.getPrenom() : peb.getPrenom()));
 				peb.setRoles((pilote_da.getRoles() != null ? pilote_da.getRoles() : peb.getRoles()));
+				peb.setPassword((pilote_da.getPassword() != null ? passwordEncoder.encode(pilote_da.getPassword()) : peb.getPassword()));
+				peb.setUsername((pilote_da.getUsername() != null ? pilote_da.getUsername() : peb.getUsername()));
 				pilote_DaRepository.save(peb);
 				return new ResponseEntity<Void>(HttpStatus.OK);
 			} else {
 				pilote_DaRepository.save(pilote_da);
+				pilote_da.setPassword(passwordEncoder.encode(pilote_da.getPassword()));
 				return new ResponseEntity<Void>(HttpStatus.CREATED);
 			}
 		}
