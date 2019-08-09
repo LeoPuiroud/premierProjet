@@ -12,6 +12,7 @@ import { UserService } from '../User.service';
 import { AuthenticateUserService } from '../AuthenticateUser.service';
 
 
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -53,16 +54,6 @@ export class EditComponent implements OnInit {
       console.log('cas 2');
     }
   }
-
-
-
-  // public saveNewDa() {
-  //   console.log(this.da);
-  //   console.log(this._da);
-  //   this.daService.save(this._da).subscribe(res =>
-  //     this.router.navigate(['edit'])
-  //   );
-  // }
 
 
   public setDaToEdit() {
@@ -109,6 +100,65 @@ export class EditComponent implements OnInit {
   public listPilote_da() {
     this.userService.listAllPilote_da().subscribe(res =>
       this._pilote_das = res)
+  }
+
+  public forClient(){
+    var a = true;
+    this.auth.token.roles.forEach(e => {
+      if (e == 'ROLE_CLIENT'|| e == 'ROLE_ADMIN'){
+        a = false;
+      }
+    });
+    return a;
+  }
+
+  public forCdp(){
+    var a = true;
+    this.auth.token.roles.forEach(e => {
+      if (e == 'ROLE_CDP' || e == 'ROLE_ADMIN'){
+        a = false;
+      }
+    });
+    return a;
+  }
+  public forCorrespondant(){
+    var a = true;
+    this.auth.token.roles.forEach(e => {
+      if (e == 'ROLE_CORRESPONDANT' || e == 'ROLE_ADMIN'){
+        a = false;
+      }
+    });
+    return a;
+  }
+
+  public forSpecialiste(){
+    var a = true;
+    this.auth.token.roles.forEach(e => {
+      if (e == 'ROLE_SPECIALISTE' || e == 'ROLE_ADMIN'){
+        a = false;
+      }
+    });
+    return a;
+  }
+
+  public forPilote_da(){
+    var a = true;
+    this.auth.token.roles.forEach(e => {
+      if (e == 'ROLE_DA' || e == 'ROLE_ADMIN'){
+        a = false;
+      }
+    });
+    return a;
+  }
+
+  public forAdmin(){
+    var a = true;
+    this.auth.token.roles.forEach(e => {
+      if (e == 'ROLE_ADMIN'){
+        a = false;
+      }
+    });
+    return a;
   }
 
 
@@ -159,6 +209,7 @@ export class EditComponent implements OnInit {
   set pilote_das(value: Pilote_Da[]) {
     this._pilote_das = value;
   }
+
 
   // get selectedClient(): Client {
   //   return this._selectedClient;

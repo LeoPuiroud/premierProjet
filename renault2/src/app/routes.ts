@@ -14,6 +14,7 @@ import { EditSpecialisteComponent } from './EditSpecialiste/EditSpecialiste.comp
 import { EditPilote_daComponent } from './EditPilote_da/EditPilote_da.component';
 import { LoginComponent } from './Login/Login.component';
 import { MesDaComponent } from './MesDa/MesDa.component';
+import { AuthenticationNeededComponent } from './AuthenticationNeeded/AuthenticationNeeded.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -30,6 +31,7 @@ export const routes: Routes = [
   {path: 'editSpecialiste', component: EditSpecialisteComponent},
   {path: 'editPilote_da', component: EditPilote_daComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'mesDa', component: MesDaComponent}
+  {path: 'mesDa', component: MesDaComponent},
+  {path: 'needAuth', component: AuthenticationNeededComponent}
 ];
 

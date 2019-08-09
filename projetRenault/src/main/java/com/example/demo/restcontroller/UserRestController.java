@@ -185,7 +185,11 @@ public class UserRestController {
 				ceb.setNom((correspondant.getNom() != null ? correspondant.getNom() : ceb.getNom()));
 				ceb.setPrenom((correspondant.getPrenom() != null ? correspondant.getPrenom() : ceb.getPrenom()));
 				ceb.setRoles((correspondant.getRoles() != null ? correspondant.getRoles() : ceb.getRoles()));
-				ceb.setPassword((correspondant.getPassword() != null ? passwordEncoder.encode(correspondant.getPassword()) : ceb.getPassword()));
+				if (correspondant.getPassword().equals(ceb.getPassword())) {	
+				}
+				else {
+					ceb.setPassword((correspondant.getPassword() != null ? passwordEncoder.encode(correspondant.getPassword()) : ceb.getPassword()));
+				}
 				ceb.setUsername((correspondant.getUsername() != null ? correspondant.getUsername() : ceb.getUsername()));
 				correspondantRepository.save(ceb);
 				return new ResponseEntity<Void>(HttpStatus.OK);

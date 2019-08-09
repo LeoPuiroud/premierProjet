@@ -22,8 +22,9 @@ export class MesDaComponent implements OnInit {
   }
 
 public list() {
-  this.daService.MesDa().subscribe(res=>
-    this._mesDa = res) 
+  this.daService.MesDa().subscribe((res=>
+    this._mesDa = res),
+    (err => this._mesDa = null))
 }
 
 get mesDa(){

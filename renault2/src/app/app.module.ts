@@ -21,6 +21,7 @@ import { EditSpecialisteComponent } from './EditSpecialiste/EditSpecialiste.comp
 import { EditPilote_daComponent } from './EditPilote_da/EditPilote_da.component';
 import { LoginComponent } from './Login/Login.component';
 import { MesDaComponent } from './MesDa/MesDa.component';
+import { AuthenticationNeededComponent } from './AuthenticationNeeded/AuthenticationNeeded.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { MesDaComponent } from './MesDa/MesDa.component';
       EditCdpComponent,
       EditPilote_daComponent,
       LoginComponent,
-      MesDaComponent
+      MesDaComponent,
+      AuthenticationNeededComponent
    ],
    imports: [
       BrowserModule,

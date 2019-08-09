@@ -4,40 +4,40 @@
 
   <div class="form-group">
     <label>Client lié à la demande d'achat: <b>{{da.client.prenom}}&nbsp;{{da.client.nom}}</b></label>
-    <select [(ngModel)]="da.client" class="form-control">
+    <select [(ngModel)]="da.client" class="form-control" [disabled]="forClient()"> 
       <option [ngValue]="client" *ngFor="let client of clients">{{client.prenom}}&nbsp;{{client.nom}}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Correspondant lié à la demande d'achat: <b>{{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</b></label>
-    <select [(ngModel)]="da.correspondant" class="form-control">
+    <select [(ngModel)]="da.correspondant" class="form-control" [disabled]="forClient()">
       <option [ngValue]="correspondant" *ngFor="let correspondant of correspondants">
         {{correspondant.prenom}}&nbsp;{{correspondant.nom}}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Chef de projet lié à la demande d'achat: <b>{{da.cdp.prenom}}&nbsp;{{da.cdp.nom}}</b></label>
-    <select [(ngModel)]="da.cdp" class="form-control">
+    <select [(ngModel)]="da.cdp" class="form-control" [disabled]="forCorrespondant()">
       <option [ngValue]="cdp" *ngFor="let cdp of cdps">{{cdp.prenom}}&nbsp;{{cdp.nom}}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Specialiste lié à la demande d'achat: <b>{{da.specialiste.prenom}}&nbsp;{{da.specialiste.nom}}</b></label>
-    <select [(ngModel)]="da.specialiste" class="form-control">
+    <select [(ngModel)]="da.specialiste" class="form-control" [disabled]="forCdp()">
       <option [ngValue]="specialiste" *ngFor="let specialiste of specialistes">
         {{specialiste.prenom}}&nbsp;{{specialiste.nom}}</option>
     </select>
   </div>
   <div class="form-group">
     <label>Acheteur lié à la demande d'achat: <b>{{da.pilote_da.prenom}}&nbsp;{{da.pilote_da.nom}}</b></label>
-    <select [(ngModel)]="da.pilote_da" class="form-control">
+    <select [(ngModel)]="da.pilote_da" class="form-control" [disabled]="forSpecialiste()">
       <option [ngValue]="pilote_da" *ngFor="let pilote_da of pilote_das">{{pilote_da.prenom}}&nbsp;{{pilote_da.nom}}
       </option>
     </select>
   </div>
   <div class="form-group">
     <label for="description_du_besoin">Description du Besoin:</label>
-    <input [(ngModel)]="da.description_du_besoin" name="description_du_besoin" class="form-control">
+    <input [disabled]="forClient()" [(ngModel)]="da.description_du_besoin" name="description_du_besoin" class="form-control">
   </div>
   <div class="form-group">
     <label for="devis_propose">Devis proposé:</label>
@@ -45,23 +45,23 @@
   </div>
   <div class="form-group">
     <label for="direction_exploitant">Direction exploitant:</label>
-    <input [(ngModel)]="da.direction_exploitant" name="direction_exploitant" class="form-control">
+    <input [disabled]="forClient()" [(ngModel)]="da.direction_exploitant" name="direction_exploitant" class="form-control">
   </div>
   <div class="form-group">
     <label for="service_exploitant">Service exploitant:</label>
-    <input [(ngModel)]="da.service_exploitant" name="service_exploitant" class="form-control">
+    <input [disabled]="forClient()" [(ngModel)]="da.service_exploitant" name="service_exploitant" class="form-control">
   </div>
   <div class="form-group">
     <label for="site_utilisation">Site d'utilisation:</label>
-    <input [(ngModel)]="da.site_utilisation" name="site_utilisation" class="form-control">
+    <input [disabled]="forClient()" [(ngModel)]="da.site_utilisation" name="site_utilisation" class="form-control">
   </div>
   <div class="form-group">
     <label for="validation_du_besoin">Besoin validé:</label>&nbsp;
-    <input type="checkbox" [(ngModel)]="da.validation_du_besoin" name="validation_du_besoin">
+    <input [disabled]="forSpecialiste()" type="checkbox" [(ngModel)]="da.validation_du_besoin" name="validation_du_besoin">
   </div>
   <div class="form-group">
     <label for="zone_commentaire">Commentaires:</label>
-    <textarea rows="5" [(ngModel)]="da.zone_commentaire" name="zone_commentaire" class="form-control"></textarea>
+    <textarea [disabled]="forSpecialiste()" rows="5" [(ngModel)]="da.zone_commentaire" name="zone_commentaire" class="form-control"></textarea>
   </div>
   <div class="content">
     <button class="btn btn-success" (click)="save()">Enregistrer</button>&nbsp;<button class="btn btn-warning"

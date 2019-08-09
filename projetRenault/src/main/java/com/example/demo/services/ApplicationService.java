@@ -97,7 +97,7 @@ public class ApplicationService implements CommandLineRunner {
 			pda.setNom("nompiloteda");
 			pda.setUsername("piloteda");
 			pda.setPassword(passwordencoder.encode("piloteda"));
-			pda.addRoles(Roles.ROLE_DA);
+			pda.addRoles(Roles.ROLE_PILOTEDA);
 			pilote_DaRepository.save(pda);
 			Da demande1 = new Da();
 			demande1.setClient(c2);

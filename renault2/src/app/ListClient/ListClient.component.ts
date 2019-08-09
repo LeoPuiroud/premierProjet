@@ -16,6 +16,7 @@ export class ListClientComponent implements OnInit {
   constructor(private userService: UserService, private router: Router,private auth: AuthenticateUserService) { }
 
   ngOnInit() {
+    console.log(this.auth.adminToken);
     this.auth.canActivate();
     this.listClient();
   }

@@ -32,8 +32,7 @@
 <div>
  <router-outlet></router-outlet>
 </div>
-<div *ngIf="connectedUser != null">
-    {{connectedUser.roles}}
+<div *ngIf="this.auth.token != null">
+    {{this.auth.token.roles}}
 </div>
-
 

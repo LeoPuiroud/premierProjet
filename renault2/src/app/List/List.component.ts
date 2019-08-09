@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Da } from '../Da';
 import { DaService } from '../da.service';
-import { EditComponent } from '../edit/edit.component';
 import { Router } from '@angular/router';
 import { AuthenticateUserService } from '../AuthenticateUser.service';
 
@@ -18,7 +17,7 @@ export class ListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.auth.adminCanActivate();
+  this.auth.canActivate();
     this.list();
   }
 

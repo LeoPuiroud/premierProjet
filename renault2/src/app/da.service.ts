@@ -42,8 +42,10 @@ this._id = id;
 console.log('positionnement de l_id du service');
 }
 
+//console.log(this.auth.token.roles[0].substring(5)) renvoi le 1er role du user tronqué apres le ROLE_ et en minuscule, pour appeler la méthode du controler 
 public MesDa(): Observable<any>{
-return this.http.get(this.url + '/da/client/' +this.auth.token.id);
+  console.log(this.auth.token.roles[0].substring(5));
+return this.http.get(this.url + '/da' + '/' + this.auth.token.roles[0].substring(5).toLowerCase() + '/' + this.auth.token.id);
 }
 
 

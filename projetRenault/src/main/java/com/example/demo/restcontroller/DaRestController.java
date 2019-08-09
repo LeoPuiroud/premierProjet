@@ -82,7 +82,7 @@ public class DaRestController {
 	}
 
 	// Get the Da list by a pilote_da Id
-	@GetMapping(value = { "/pilote_da/{id}" })
+	@GetMapping(value = { "/piloteda/{id}" })
 	public ResponseEntity<List<Da>> findAllByPilote_da(@PathVariable(name = "id") Integer id) {
 		return new ResponseEntity<List<Da>>(daRepository.findListDaParPilote_da(id).get(), HttpStatus.OK);
 	}
