@@ -35,11 +35,13 @@ export class EditCdpComponent implements OnInit {
 
   public save(){
     console.log(this._cdp)
-    this.userService.saveCdp(this._cdp).subscribe(res=>
+    this.userService.saveCdp(this._cdp).subscribe(res=>{
       this._cdp = null,
-      this.userService.selectedCdp = null
+      this.userService.selectedCdp = null,
+      this.router.navigate(['listCdp']);
+    }
       );
-      this.router.navigate(['home']);
+      
   }
 
   public annuler() {

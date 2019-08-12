@@ -48,6 +48,18 @@ export class AuthenticateUserService {
     }
   }
 
+  public adminCanSee() {
+    this._token.roles.forEach(role => {
+      console.log(role);
+      if (role == Roles.ROLE_ADMIN) {
+        return true;
+      }
+      else {
+        return false;
+      }
+  })
+}
+
   public login(user: User) {
     this.loginService.login(user).subscribe((res => {
       if (res) {

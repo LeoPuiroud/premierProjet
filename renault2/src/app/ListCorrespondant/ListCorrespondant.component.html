@@ -3,19 +3,23 @@
 <div class="container-fluid" class="text-center">
   <br>
   <h1 >Liste des Correspondants</h1>
-<table class="table">
+<table class="table table-striped">
+  <thead>
 <tr>
   <th>ID</th>
   <th>Nom</th>
   <th>Prenom</th>
   <th></th>
 </tr>
+</thead>
+<tbody>
 <tr *ngFor="let c of correspondants">
   <td>{{c.id}}</td>
   <td>{{c.nom}}</td>
   <td>{{c.prenom}}</td>
   <td><button class="btn btn-warning" (click)="selectedCorrespondant(c)" [routerLink]="[ '/editCorrespondant' ]" routerLinkActive="active">Editer</button></td>
 </tr>
+</tbody>
 </table>
 <button class="btn btn-success"[routerLink]="[ '/editCorrespondant' ]" routerLinkActive="active">Ajouter correspondant</button>
 </div>

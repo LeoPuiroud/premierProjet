@@ -3,19 +3,23 @@
 <div class="container-fluid" class="text-center">
     <br>
     <h1 >Liste des Specialistes</h1>
-  <table class="table">
+  <table class="table table-striped">
+    <thead>
   <tr>
     <th>ID</th>
     <th>Nom</th>
     <th>Prenom</th>
     <th></th>
   </tr>
+</thead>
+<tbody>
   <tr *ngFor="let s of specialistes">
     <td>{{s.id}}</td>
     <td>{{s.nom}}</td>
     <td>{{s.prenom}}</td>
     <td><button class="btn btn-warning" (click)="selectedSpecialiste(s)" [routerLink]="[ '/editSpecialiste' ]" routerLinkActive="active">Editer</button></td>
   </tr>
+</tbody>
   </table>
   <button class="btn btn-success"[routerLink]="[ '/editSpecialiste' ]" routerLinkActive="active">Ajouter Specialiste</button>
   </div>

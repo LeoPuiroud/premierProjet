@@ -71,10 +71,12 @@ export class EditComponent implements OnInit {
   public save() {
     console.log(this.da);
     console.log(this._da);
-    this.daService.save(this._da).subscribe(res =>
-      this.daService.id = null
+    this.daService.save(this._da).subscribe(res =>{
+      this.daService.id = null,
+      this.router.navigate(['mesDa'])
+    }
     );
-    this.router.navigate(['home'])
+    
   }
 
   public listClient() {

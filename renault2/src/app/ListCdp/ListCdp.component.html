@@ -2,19 +2,23 @@
 <div class="container-fluid" class="text-center">
     <br>
     <h1 >Liste des Chefs de projet</h1>
-  <table class="table">
+  <table class="table table-striped">
+    <thead>
   <tr>
     <th>ID</th>
     <th>Nom</th>
     <th>Prenom</th>
     <th></th>
   </tr>
+</thead>
+<tbody>
   <tr *ngFor="let c of cdps">
     <td>{{c.id}}</td>
     <td>{{c.nom}}</td>
     <td>{{c.prenom}}</td>
     <td><button class="btn btn-warning" (click)="selectedCdp(c)" [routerLink]="[ '/editCdp' ]" routerLinkActive="active">Editer</button></td>
   </tr>
+</tbody>
   
   </table>
   <button class="btn btn-success"[routerLink]="[ '/editCdp' ]" routerLinkActive="active">Ajouter Chef de projet</button>

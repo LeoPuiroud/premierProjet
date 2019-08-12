@@ -35,11 +35,11 @@ export class EditPilote_daComponent implements OnInit {
 
   public save(){
     console.log(this._pilote_da)
-    this.userService.savePilote_da(this._pilote_da).subscribe(res=>
+    this.userService.savePilote_da(this._pilote_da).subscribe(res=>{
       this._pilote_da = null,
-      this.userService.selectedPilote_da = null
+      this.userService.selectedPilote_da = null,
+      this.router.navigate(['listPilote_da']); }
       );
-      this.router.navigate(['home']);
   }
 
   public annuler() {

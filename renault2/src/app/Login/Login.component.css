@@ -1,4 +1,6 @@
 #base{
     max-width: 50%;
     margin-top: 10%;
+    padding: 2%;
+    background-color: lightblue;
 }

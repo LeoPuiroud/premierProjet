@@ -1,13 +1,20 @@
-<div class="container-fluid" id="base">
-<!-- <h1>Connected as : {{connectedUser.prenom}}&nbsp;{{connectedUser.nom}}</h1> -->
-  <div>
-    <label>Username:</label>
-    <input [(ngModel)]="user.username" type="text" class="form-control">
+<div class="container-fluid rounded shadow" id="base">
+<h1 *ngIf="auth.token != null">Connected as : {{connectedUser.prenom}}&nbsp;{{connectedUser.nom}}</h1>
+<h1 *ngIf="auth.token == null">Please connect</h1>
+<br>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text bg-warning shadow">Username :</span>
+    </div>
+    <input [(ngModel)]="user.username" type="text" class="form-control shadow">
   </div>
-  <div>
-    <label>Password:</label>
-    <input  [(ngModel)]="user.password" type="password" class="form-control">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text bg-warning shadow">Password :</span>
+    </div>
+    <input  [(ngModel)]="user.password" type="password" class="form-control shadow">
   </div>
-  <br>
 <button class="btn btn-success" (click)="login()">Login</button>
+
 </div>

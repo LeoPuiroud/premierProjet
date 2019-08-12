@@ -2,19 +2,23 @@
 <div class="container-fluid" class="text-center">
     <br>
     <h1 >Liste des Acheteurs</h1>
-  <table class="table">
+  <table class="table table-striped">
+    <thead>
   <tr>
     <th>ID</th>
     <th>Nom</th>
     <th>Prenom</th>
     <th></th>
   </tr>
+</thead>
+<tbody>
   <tr *ngFor="let s of pilote_das">
     <td>{{s.id}}</td>
     <td>{{s.nom}}</td>
     <td>{{s.prenom}}</td>
     <td><button class="btn btn-warning" (click)="selectedPilote_da(s)" [routerLink]="[ '/editPilote_da' ]" routerLinkActive="active">Editer</button></td>
   </tr>
+</tbody>
   </table>
   <button class="btn btn-success"[routerLink]="[ '/editPilote_da' ]" routerLinkActive="active">Ajouter Acheteur</button>
   </div>

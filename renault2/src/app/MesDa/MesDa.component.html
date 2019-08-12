@@ -3,7 +3,8 @@
 <div class="container-fluid" class="text-center" *ngIf="mesDa">
   <br>
   <h1>Mes demandes d'achats</h1>
-  <table class="table">
+  <table class="table table-striped">
+    <thead>
   <tr>
     <th>ID</th>
     <th>Client</th>
@@ -19,8 +20,10 @@
     <th>commentaire</th>
     <th>version</th>
     <th></th>
-    <th></th>
+
   </tr>
+</thead>
+<tbody>
   <tr *ngFor="let da of mesDa" >
 
 <td>{{da.id}}</td>
@@ -43,5 +46,6 @@
 <td>{{da.version}}</td>
 <td><button class="btn btn-warning" (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active" >Editer</button></td>  
 </tr>
+</tbody>
 </table>
 </div>

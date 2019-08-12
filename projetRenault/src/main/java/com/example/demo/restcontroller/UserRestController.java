@@ -127,7 +127,11 @@ public class UserRestController {
 				ceb.setNom((client.getNom() != null ? client.getNom() : ceb.getNom()));
 				ceb.setPrenom((client.getPrenom() != null ? client.getPrenom() : ceb.getPrenom()));
 				ceb.setRoles((client.getRoles() != null ? client.getRoles() : ceb.getRoles()));
-				ceb.setPassword((client.getPassword() != null ? passwordEncoder.encode(client.getPassword()) : ceb.getPassword()));
+				if (client.getPassword().equals(ceb.getPassword())) {	
+				}
+				else {
+					ceb.setPassword((client.getPassword() != null ? passwordEncoder.encode(client.getPassword()) : ceb.getPassword()));
+				}
 				ceb.setUsername((client.getUsername() != null ? client.getUsername() : ceb.getUsername()));
 				clientRepository.save(ceb);
 				return new ResponseEntity<Void>(HttpStatus.OK);
@@ -216,7 +220,11 @@ public class UserRestController {
 				seb.setNom((specialiste.getNom() != null ? specialiste.getNom() : seb.getNom()));
 				seb.setPrenom((specialiste.getPrenom() != null ? specialiste.getPrenom() : seb.getPrenom()));
 				seb.setRoles((specialiste.getRoles() != null ? specialiste.getRoles() : seb.getRoles()));
-				seb.setPassword((specialiste.getPassword() != null ? passwordEncoder.encode(specialiste.getPassword()) : seb.getPassword()));
+				if (specialiste.getPassword().equals(seb.getPassword())) {	
+				}
+				else {
+					seb.setPassword((specialiste.getPassword() != null ? passwordEncoder.encode(specialiste.getPassword()) : seb.getPassword()));
+				}
 				seb.setUsername((specialiste.getUsername() != null ? specialiste.getUsername() : seb.getUsername()));
 				specialisteRepository.save(seb);
 				return new ResponseEntity<Void>(HttpStatus.OK);
@@ -243,7 +251,11 @@ public class UserRestController {
 				peb.setNom((pilote_da.getNom() != null ? pilote_da.getNom() : peb.getNom()));
 				peb.setPrenom((pilote_da.getPrenom() != null ? pilote_da.getPrenom() : peb.getPrenom()));
 				peb.setRoles((pilote_da.getRoles() != null ? pilote_da.getRoles() : peb.getRoles()));
-				peb.setPassword((pilote_da.getPassword() != null ? passwordEncoder.encode(pilote_da.getPassword()) : peb.getPassword()));
+				if (pilote_da.getPassword().equals(peb.getPassword())) {	
+				}
+				else {
+					peb.setPassword((pilote_da.getPassword() != null ? passwordEncoder.encode(pilote_da.getPassword()) : peb.getPassword()));
+				}
 				peb.setUsername((pilote_da.getUsername() != null ? pilote_da.getUsername() : peb.getUsername()));
 				pilote_DaRepository.save(peb);
 				return new ResponseEntity<Void>(HttpStatus.OK);

@@ -38,11 +38,13 @@ export class EditClientComponent implements OnInit {
 
   public save() {
     console.log(this._client)
-    this.userService.saveClient(this._client).subscribe(res=>
+    this.userService.saveClient(this._client).subscribe(res=>{
       this._client = null,
-      this.userService.selectedClient = null
+      this.userService.selectedClient = null,
+      this.router.navigate(['listClient']);
+    }
       );
-      this.router.navigate(['home'])
+      
     }
 
     public annuler() {

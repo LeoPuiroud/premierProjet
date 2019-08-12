@@ -1,38 +1,52 @@
-<div class="container-fluid">
- <nav class="navbar">
-    <a class="navbar-toggler btn btn-default" [routerLink]="[ '/home' ]" routerLinkActive="active">Home</a> 
-    <a class="navbar-toggler btn btn-default" [routerLink]="[ '/login' ]" routerLinkActive="active">Login</a>
-    <a class="navbar-toggler btn btn-default" [routerLink]="[ '/login' ]" routerLinkActive="active" (click)="logout()">Logout</a>
-    <a class="navbar-toggler btn btn-default" [routerLink]="[ '/mesDa' ]" routerLinkActive="active">Mes demandes d'achats</a>
-    <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Demandes d'achats
-        <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" >
-        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/list_da' ]" routerLinkActive="active">Liste des DA</a></li>
-        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/edit' ]" routerLinkActive="active">Créer une nouvelle DA</a></li>
-        </ul>
-    </div>
-    <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Listes des utilisateurs
-        <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" >
-        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listClient' ]" routerLinkActive="active">Liste des clients</a></li>
-        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listCorrespondant' ]" routerLinkActive="active">Liste des correspondants</a></li>
-        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listSpecialiste' ]" routerLinkActive="active">Liste des specialistes</a></li>
-        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listCdp' ]" routerLinkActive="active">Liste des chefs de projet</a></li>
-        <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listPilote_da' ]" routerLinkActive="active">Liste des acheteurs</a></li>
-        </ul>
-    </div>
-</nav>
-</div>
-<div>
- <router-outlet></router-outlet>
-</div>
-<div *ngIf="this.auth.token != null">
-    {{this.auth.token.roles}}
-</div>
 
+    <div class="container-fluid">
+    <nav class="navbar rounded-lg shadow">
+        <a class="navbar-brand" [routerLink]="[ '/home' ]" routerLinkActive="active"><img
+                src="../assets/images/image renault.jpg" alt="Home" id="logo" width="120px" height="40px"></a>
+        <a class="navbar-toggler btn btn-default" [routerLink]="[ '/mesDa' ]" routerLinkActive="active">Mes demandes
+            d'achats</a>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Demandes d'achats
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/list_da' ]"
+                        routerLinkActive="active">Liste des DA</a></li>
+                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/edit' ]"
+                        routerLinkActive="active">Créer une nouvelle DA</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Listes des utilisateurs
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listClient' ]"
+                        routerLinkActive="active">Liste des clients</a></li>
+                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listCorrespondant' ]"
+                        routerLinkActive="active">Liste des correspondants</a></li>
+                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listSpecialiste' ]"
+                        routerLinkActive="active">Liste des specialistes</a></li>
+                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listCdp' ]"
+                        routerLinkActive="active">Liste des chefs de projet</a></li>
+                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listPilote_da' ]"
+                        routerLinkActive="active">Liste des acheteurs</a></li>
+            </ul>
+        </div>
+        <a class="navbar-toggler btn btn-default" [routerLink]="[ '/login' ]" routerLinkActive="active">Login</a>
+        <a *ngIf="auth.token != null" class="navbar-toggler btn btn-default" [routerLink]="[ '/login' ]"
+            routerLinkActive="active" (click)="logout()">Logout</a>
+    </nav>
+
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+
+    <div *ngIf="this.auth.token != null">
+        {{this.auth.token.roles}}
+    </div>
+</div>

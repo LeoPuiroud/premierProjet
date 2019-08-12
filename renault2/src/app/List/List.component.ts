@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
 
   public das: Da[];
 
-  constructor(private daService: DaService, private router: Router, private auth: AuthenticateUserService) { }
+  constructor(private daService: DaService, private router: Router, public auth: AuthenticateUserService) { }
 
 
   ngOnInit() {

@@ -36,11 +36,11 @@ private _selectedRole: Roles;
 
   public save() {
     console.log(this._correspondant)
-    this.userService.saveCorrespondant(this._correspondant).subscribe(res=>
+    this.userService.saveCorrespondant(this._correspondant).subscribe(res=>{
       this._correspondant = null,
-      this.userService.selectedCorrespondant = null
+      this.userService.selectedCorrespondant = null,
+      this.router.navigate(['listCorrespondant'])}
       );
-      this.router.navigate(['home'])
     }
 
     public annuler() {

@@ -1,7 +1,8 @@
 <div class="container-fluid" class="text-center">
   <br>
   <h1>Liste des demandes d'achats</h1>
-  <table class="table">
+  <table class="table table-striped">
+    <thead>
   <tr>
     <th>ID</th>
     <th>Client</th>
@@ -19,6 +20,8 @@
     <th></th>
     <th></th>
   </tr>
+</thead>
+<tbody>
   <tr *ngFor="let da of das">
 
 <td>{{da.id}}</td>
@@ -42,5 +45,6 @@
 <td><button class="btn btn-warning" (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active" >Editer</button></td>
 <td><button class="btn btn-danger" (click)="delete(da.id)">X</button></td>  
 </tr>
+</tbody>
 </table>
 </div>

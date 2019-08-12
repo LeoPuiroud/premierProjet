@@ -36,11 +36,12 @@ export class EditSpecialisteComponent implements OnInit {
 
   public save() {
     console.log(this._specialiste)
-    this.userService.saveSpecialiste(this._specialiste).subscribe(res=>
+    this.userService.saveSpecialiste(this._specialiste).subscribe(res=>{
       this._specialiste = null,
-      this.userService.selectedSpecialiste = null
+      this.userService.selectedSpecialiste = null,
+      this.router.navigate(['listSpecialiste'])
+    }
       );
-      this.router.navigate(['home'])
     }
 
     public annuler() {

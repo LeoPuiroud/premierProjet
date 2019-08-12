@@ -1,32 +1,42 @@
 <div class="container-fluid" id="base">
 
-  <div class="form-group">
-    <label>Nom:</label>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Nom :</span>
+        </div>
     <input [(ngModel)]="cdp.nom" class="form-control">
   </div>
-  <div class="form-group">
-      <label>Prenom:</label>
+  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Prénom :</span>
+      </div>
       <input [(ngModel)]="cdp.prenom" class="form-control">
     </div>
-    <div class="form-group">
-      <label>Username:</label>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Username :</span>
+        </div>
       <input [(ngModel)]="cdp.username" class="form-control">
     </div>
-    <div class="form-group">
-      <label>Password:</label>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Password :</span>
+        </div>
       <input [(ngModel)]="cdp.password" class="form-control" type="password">
     </div>
-    <div class="form-group">
-      <label>Role:</label>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Roles :</span>
+        </div>
       <select [(ngModel)]="selectedRole" class="form-control">
         <option value="ROLE_ADMIN" >Administrateur</option>
         <option value="ROLE_CLIENT" >Client</option>
         <option value="ROLE_CORRESPONDANT" >Correspondant</option>
         <option value="ROLE_SPECIALISTE" >specialiste</option>
-        <option value="ROLE_DA" >Pilote DA</option>
+        <option value="ROLE_PILOTEDA" >Pilote DA</option>
         <option value="ROLE_CDP" >Chef de projet</option>
       </select>
-      <br>
+      &nbsp;
       <button class="btn btn-success" (click)="addRole()">Ajouter role</button> 
     </div>
     Le chef de projet à le/les role(s) : <ul><li *ngFor="let role of cdp.roles">{{role}}</li></ul><button (click)="deleteRole()" class="btn btn-warning">Réinitialiser les roles</button>
