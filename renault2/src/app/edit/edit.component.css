@@ -1,7 +1,11 @@
 #base{
     margin-top: 5%;
     margin-bottom: 5%;
-    max-width: 50%;
+    max-width: 75%;
     padding: 2%;
     background-color: lightblue;
+}
+
+.input-group-prepend{
+    width: 25%;
 }

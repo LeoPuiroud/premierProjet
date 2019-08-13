@@ -1,7 +1,7 @@
 <div class="container-fluid" class="text-center">
   <br>
-    <h1>Liste des Clients</h1>
-<table class="table table-striped">
+    <h1 class="">Liste des Clients</h1>
+<table class="table table-striped shadow">
   <thead>
 <tr>
   <th>ID</th>
@@ -15,9 +15,9 @@
   <td>{{c.id}}</td>
   <td>{{c.nom}}</td>
   <td>{{c.prenom}}</td>
-  <td><button class="btn btn-warning" (click)="selectedClient(c)" [routerLink]="[ '/editClient' ]" routerLinkActive="active">Editer</button></td>
+  <td><button class="btn btn-warning shadow" (click)="selectedClient(c)" [routerLink]="[ '/editClient' ]" routerLinkActive="active">Editer</button></td>
 </tr>
 </tbody>
 </table>
-<button class="btn btn-success"[routerLink]="[ '/editClient' ]" routerLinkActive="active">Ajouter Client</button>
+<button class="btn btn-success shadow"[routerLink]="[ '/editClient' ]" routerLinkActive="active">Ajouter Client</button>
 </div>

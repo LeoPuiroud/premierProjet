@@ -1,48 +1,48 @@
 <div class="container-fluid" id="base">
 
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Nom :</span>
-        </div>
-    <input [(ngModel)]="specialiste.nom" class="form-control">
+  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text w-100">Nom :</span>
+      </div>
+  <input [(ngModel)]="specialiste.nom" class="form-control shadow">
+</div>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text w-100">Prénom :</span>
+    </div>
+    <input [(ngModel)]="specialiste.prenom" class="form-control  shadow">
   </div>
   <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text">Prénom :</span>
+        <span class="input-group-text w-100">Username :</span>
       </div>
-      <input [(ngModel)]="specialiste.prenom" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Username :</span>
-        </div>
-      <input [(ngModel)]="specialiste.username" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Password :</span>
-        </div>
-      <input [(ngModel)]="specialiste.password" class="form-control" type="password">
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Roles :</span>
-        </div>
-      <select [(ngModel)]="selectedRole" class="form-control">
-        <option value="ROLE_ADMIN" >Administrateur</option>
-        <option value="ROLE_CLIENT" >Client</option>
-        <option value="ROLE_CORRESPONDANT" >Correspondant</option>
-        <option value="ROLE_SPECIALISTE" >specialiste</option>
-        <option value="ROLE_PILOTEDA" >Pilote DA</option>
-        <option value="ROLE_CDP" >Chef de projet</option>
-      </select>
-      &nbsp;
-      <button class="btn btn-success" (click)="addRole()">Ajouter role</button> 
-    </div>
-    Le specialiste à le/les role(s) : <ul><li *ngFor="let role of specialiste.roles">{{role}}</li></ul><button (click)="deleteRole()" class="btn btn-warning">Réinitialiser les roles</button>
-   
+    <input [(ngModel)]="specialiste.username" class="form-control shadow">
+  </div>
+  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text w-100">Password :</span>
+      </div>
+    <input [(ngModel)]="specialiste.password" class="form-control shadow" type="password">
+  </div>
+  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text w-100">Roles :</span>
+      </div>
+    <select [(ngModel)]="selectedRole" class="form-control shadow">
+      <option value="ROLE_ADMIN" >Administrateur</option>
+      <option value="ROLE_CLIENT" >Client</option>
+      <option value="ROLE_CORRESPONDANT" >Correspondant</option>
+      <option value="ROLE_SPECIALISTE" >specialiste</option>
+      <option value="ROLE_PILOTEDA" >Pilote DA</option>
+      <option value="ROLE_CDP" >Chef de projet</option>
+    </select>
+    &nbsp;
+    <button class="btn btn-success shadow" (click)="addRole()">Ajouter role</button> 
+  </div>
+  Le specialiste à le/les role(s) : <ul><li *ngFor="let role of specialiste.roles">{{role}}</li></ul><button (click)="deleteRole()" class="btn btn-warning  shadow">Réinitialiser les roles</button>
+ 
 
-&nbsp;<button class="btn btn-success" (click)="save()">Enregistrer</button>
-&nbsp;<button class="btn btn-warning" (click)="annuler()">Annuler</button>
+&nbsp;<button class="btn btn-success shadow" (click)="save()">Enregistrer</button>
+&nbsp;<button class="btn btn-warning shadow" (click)="annuler()">Annuler</button>
 
 </div>

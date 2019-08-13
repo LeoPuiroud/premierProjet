@@ -2,7 +2,7 @@
 <div class="container-fluid" class="text-center">
     <br>
     <h1 >Liste des Acheteurs</h1>
-  <table class="table table-striped">
+  <table class="table table-striped shadow">
     <thead>
   <tr>
     <th>ID</th>
@@ -16,9 +16,9 @@
     <td>{{s.id}}</td>
     <td>{{s.nom}}</td>
     <td>{{s.prenom}}</td>
-    <td><button class="btn btn-warning" (click)="selectedPilote_da(s)" [routerLink]="[ '/editPilote_da' ]" routerLinkActive="active">Editer</button></td>
+    <td><button class="btn btn-warning shadow" (click)="selectedPilote_da(s)" [routerLink]="[ '/editPilote_da' ]" routerLinkActive="active">Editer</button></td>
   </tr>
 </tbody>
   </table>
-  <button class="btn btn-success"[routerLink]="[ '/editPilote_da' ]" routerLinkActive="active">Ajouter Acheteur</button>
+  <button class="btn btn-success shadow"[routerLink]="[ '/editPilote_da' ]" routerLinkActive="active">Ajouter Acheteur</button>
   </div>

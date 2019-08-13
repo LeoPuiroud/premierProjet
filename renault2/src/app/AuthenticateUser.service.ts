@@ -26,10 +26,11 @@ export class AuthenticateUserService {
   }
 
   public adminCanActivate() {
+    var a = false;
     console.log(this._token);
     if (this._token == null) {
       this.router.navigate(['/needAuth']);
-      return false;
+      return a;
     }
     else {
       this._token.roles.forEach(role => {
@@ -37,14 +38,11 @@ export class AuthenticateUserService {
         console.log(Roles.ROLE_ADMIN);
         if (role == Roles.ROLE_ADMIN) {
           this._adminToken = true;
-          console.log(this._adminToken)
-          return true;
-        }
-        else {
-          this.router.navigate(['/needAuth']);
-          return false;
+          a = true;
+          console.log(this._adminToken);
         }
       });
+      return a;
     }
   }
 

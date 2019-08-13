@@ -5,7 +5,7 @@
   <label>Client lié à la demande d'achat: <b>{{da.client.prenom}}&nbsp;{{da.client.nom}}</b></label>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text">Client :</span>
+      <span class="input-group-text w-100">Client :</span>
     </div>
     <select [(ngModel)]="da.client" class="form-control shadow" [disabled]="forClient()">
       <option [ngValue]="client" *ngFor="let client of clients">{{client.prenom}}&nbsp;{{client.nom}}</option>
@@ -15,7 +15,7 @@
     <b>{{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</b></label>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text">Correspondant :</span>
+      <span class="input-group-text  w-100">Correspondant :</span>
     </div>
     <select [(ngModel)]="da.correspondant" class="form-control shadow" [disabled]="forClient()">
       <option [ngValue]="correspondant" *ngFor="let correspondant of correspondants">
@@ -25,7 +25,7 @@
   <label>Chef de projet lié à la demande d'achat: <b>{{da.cdp.prenom}}&nbsp;{{da.cdp.nom}}</b></label>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text">Chef de projet :</span>
+      <span class="input-group-text  w-100">Chef de projet :</span>
     </div>
     <select [(ngModel)]="da.cdp" class="form-control shadow" [disabled]="forCorrespondant()">
       <option [ngValue]="cdp" *ngFor="let cdp of cdps">{{cdp.prenom}}&nbsp;{{cdp.nom}}</option>
@@ -34,7 +34,7 @@
   <label>Specialiste lié à la demande d'achat: <b>{{da.specialiste.prenom}}&nbsp;{{da.specialiste.nom}}</b></label>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text">Specialiste :</span>
+      <span class="input-group-text  w-100">Specialiste :</span>
     </div>
     <select [(ngModel)]="da.specialiste" class="form-control shadow" [disabled]="forCdp()">
       <option [ngValue]="specialiste" *ngFor="let specialiste of specialistes">
@@ -44,7 +44,7 @@
   <label>Acheteur lié à la demande d'achat: <b>{{da.pilote_da.prenom}}&nbsp;{{da.pilote_da.nom}}</b></label>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text">Acheteur :</span>
+      <span class="input-group-text w-100">Acheteur :</span>
     </div>
     <select [(ngModel)]="da.pilote_da" class="form-control shadow" [disabled]="forSpecialiste()">
       <option [ngValue]="pilote_da" *ngFor="let pilote_da of pilote_das">{{pilote_da.prenom}}&nbsp;{{pilote_da.nom}}
@@ -53,7 +53,7 @@
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text">
+      <span class="input-group-text w-100">
         Description du besoin :
       </span>
     </div>
@@ -62,7 +62,7 @@
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text">
+      <span class="input-group-text w-100">
         Devis proposé :
       </span>
     </div>
@@ -70,7 +70,7 @@
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text">
+      <span class="input-group-text w-100">
         Direction exploitant:
       </span>
     </div>
@@ -79,7 +79,7 @@
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text">
+      <span class="input-group-text w-100">
         Service exploitant :
       </span>
     </div>
@@ -87,13 +87,13 @@
   </div>
   <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text">Site d'utilisation :</span>
+        <span class="input-group-text w-100">Site d'utilisation :</span>
       </div>
     <input [disabled]="forClient()" [(ngModel)]="da.site_utilisation" name="site_utilisation" class="form-control shadow">
   </div>
   <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text">Validation du besoin :</span>
+        <span class="input-group-text w-100">Validation du besoin :</span>
       </div>
       <select [(ngModel)]="da.validation_du_besoin" class="form-control shadow" [disabled]="forCdp()">
         <option [ngValue]="true">Oui</option>
@@ -102,7 +102,7 @@
   </div>
   <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text">Commentaires :</span>
+        <span class="input-group-text w-100">Commentaires :</span>
       </div>
     <textarea [disabled]="forSpecialiste()" rows="5" [(ngModel)]="da.zone_commentaire" name="zone_commentaire"
       class="form-control shadow"></textarea>

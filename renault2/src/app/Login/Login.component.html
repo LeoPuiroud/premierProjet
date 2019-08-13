@@ -5,16 +5,16 @@
 
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-        <span class="input-group-text bg-warning shadow">Username :</span>
+        <span class="input-group-text bg-warning shadow w-100">Username :</span>
     </div>
     <input [(ngModel)]="user.username" type="text" class="form-control shadow">
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text bg-warning shadow">Password :</span>
+      <span class="input-group-text bg-warning shadow w-100">Password :</span>
     </div>
     <input  [(ngModel)]="user.password" type="password" class="form-control shadow">
   </div>
-<button class="btn btn-success" (click)="login()">Login</button>
+<button class="btn btn-success shadow" (click)="login()">Login</button>
 
 </div>

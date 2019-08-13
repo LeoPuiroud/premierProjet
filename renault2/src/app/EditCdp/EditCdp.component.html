@@ -2,33 +2,33 @@
 
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text">Nom :</span>
+          <span class="input-group-text w-100">Nom :</span>
         </div>
-    <input [(ngModel)]="cdp.nom" class="form-control">
+    <input [(ngModel)]="cdp.nom" class="form-control shadow">
   </div>
   <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text">Prénom :</span>
+        <span class="input-group-text w-100">Prénom :</span>
       </div>
-      <input [(ngModel)]="cdp.prenom" class="form-control">
+      <input [(ngModel)]="cdp.prenom" class="form-control  shadow">
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text">Username :</span>
+          <span class="input-group-text w-100">Username :</span>
         </div>
-      <input [(ngModel)]="cdp.username" class="form-control">
+      <input [(ngModel)]="cdp.username" class="form-control shadow">
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text">Password :</span>
+          <span class="input-group-text w-100">Password :</span>
         </div>
-      <input [(ngModel)]="cdp.password" class="form-control" type="password">
+      <input [(ngModel)]="cdp.password" class="form-control shadow" type="password">
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text">Roles :</span>
+          <span class="input-group-text w-100">Roles :</span>
         </div>
-      <select [(ngModel)]="selectedRole" class="form-control">
+      <select [(ngModel)]="selectedRole" class="form-control shadow">
         <option value="ROLE_ADMIN" >Administrateur</option>
         <option value="ROLE_CLIENT" >Client</option>
         <option value="ROLE_CORRESPONDANT" >Correspondant</option>
@@ -37,12 +37,12 @@
         <option value="ROLE_CDP" >Chef de projet</option>
       </select>
       &nbsp;
-      <button class="btn btn-success" (click)="addRole()">Ajouter role</button> 
+      <button class="btn btn-success shadow" (click)="addRole()">Ajouter role</button> 
     </div>
-    Le chef de projet à le/les role(s) : <ul><li *ngFor="let role of cdp.roles">{{role}}</li></ul><button (click)="deleteRole()" class="btn btn-warning">Réinitialiser les roles</button>
+    Le chef de projet à le/les role(s) : <ul><li *ngFor="let role of cdp.roles">{{role}}</li></ul><button (click)="deleteRole()" class="btn btn-warning  shadow">Réinitialiser les roles</button>
    
 
-&nbsp;<button class="btn btn-success" (click)="save()">Enregistrer</button>
-&nbsp;<button class="btn btn-warning" (click)="annuler()">Annuler</button>
+&nbsp;<button class="btn btn-success shadow" (click)="save()">Enregistrer</button>
+&nbsp;<button class="btn btn-warning shadow" (click)="annuler()">Annuler</button>
 
 </div>

@@ -4,3 +4,7 @@
     padding: 2%;
     background-color: lightblue;
 }
+
+.input-group-prepend{
+    width: 20%;
+}

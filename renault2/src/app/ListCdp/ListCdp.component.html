@@ -2,7 +2,7 @@
 <div class="container-fluid" class="text-center">
     <br>
     <h1 >Liste des Chefs de projet</h1>
-  <table class="table table-striped">
+  <table class="table table-striped shadow">
     <thead>
   <tr>
     <th>ID</th>
@@ -16,10 +16,10 @@
     <td>{{c.id}}</td>
     <td>{{c.nom}}</td>
     <td>{{c.prenom}}</td>
-    <td><button class="btn btn-warning" (click)="selectedCdp(c)" [routerLink]="[ '/editCdp' ]" routerLinkActive="active">Editer</button></td>
+    <td><button class="btn btn-warning shadow" (click)="selectedCdp(c)" [routerLink]="[ '/editCdp' ]" routerLinkActive="active">Editer</button></td>
   </tr>
 </tbody>
   
   </table>
-  <button class="btn btn-success"[routerLink]="[ '/editCdp' ]" routerLinkActive="active">Ajouter Chef de projet</button>
+  <button class="btn btn-success shadow"[routerLink]="[ '/editCdp' ]" routerLinkActive="active">Ajouter Chef de projet</button>
   </div>

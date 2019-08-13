@@ -3,7 +3,7 @@
 <div class="container-fluid" class="text-center">
     <br>
     <h1 >Liste des Specialistes</h1>
-  <table class="table table-striped">
+  <table class="table table-striped shadow">
     <thead>
   <tr>
     <th>ID</th>
@@ -17,9 +17,9 @@
     <td>{{s.id}}</td>
     <td>{{s.nom}}</td>
     <td>{{s.prenom}}</td>
-    <td><button class="btn btn-warning" (click)="selectedSpecialiste(s)" [routerLink]="[ '/editSpecialiste' ]" routerLinkActive="active">Editer</button></td>
+    <td><button class="btn btn-warning shadow" (click)="selectedSpecialiste(s)" [routerLink]="[ '/editSpecialiste' ]" routerLinkActive="active">Editer</button></td>
   </tr>
 </tbody>
   </table>
-  <button class="btn btn-success"[routerLink]="[ '/editSpecialiste' ]" routerLinkActive="active">Ajouter Specialiste</button>
+  <button class="btn btn-success shadow"[routerLink]="[ '/editSpecialiste' ]" routerLinkActive="active">Ajouter Specialiste</button>
   </div>

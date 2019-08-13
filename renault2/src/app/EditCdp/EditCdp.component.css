@@ -2,3 +2,7 @@
     max-width: 50%;
     margin-top: 10%;
 }
+
+.input-group-prepend{
+    width: 20%;
+}

@@ -1,7 +1,7 @@
 <div class="container-fluid" class="text-center">
   <br>
   <h1>Liste des demandes d'achats</h1>
-  <table class="table table-striped">
+  <table class="table table-striped shadow">
     <thead>
   <tr>
     <th>ID</th>
@@ -42,8 +42,8 @@
 <td>{{da.site_utilisation}}</td>
 <td>{{da.zone_commentaire}}</td>
 <td>{{da.version}}</td>
-<td><button class="btn btn-warning" (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active" >Editer</button></td>
-<td><button class="btn btn-danger" (click)="delete(da.id)">X</button></td>  
+<td><button class="btn btn-warning shadow" (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active" >Editer</button></td>
+<td><button class="btn btn-danger shadow" (click)="delete(da.id)">X</button></td>  
 </tr>
 </tbody>
 </table>

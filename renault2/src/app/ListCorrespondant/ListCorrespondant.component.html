@@ -3,7 +3,7 @@
 <div class="container-fluid" class="text-center">
   <br>
   <h1 >Liste des Correspondants</h1>
-<table class="table table-striped">
+<table class="table table-striped shadow">
   <thead>
 <tr>
   <th>ID</th>
@@ -17,9 +17,9 @@
   <td>{{c.id}}</td>
   <td>{{c.nom}}</td>
   <td>{{c.prenom}}</td>
-  <td><button class="btn btn-warning" (click)="selectedCorrespondant(c)" [routerLink]="[ '/editCorrespondant' ]" routerLinkActive="active">Editer</button></td>
+  <td><button class="btn btn-warning shadow" (click)="selectedCorrespondant(c)" [routerLink]="[ '/editCorrespondant' ]" routerLinkActive="active">Editer</button></td>
 </tr>
 </tbody>
 </table>
-<button class="btn btn-success"[routerLink]="[ '/editCorrespondant' ]" routerLinkActive="active">Ajouter correspondant</button>
+<button class="btn btn-success shadow"[routerLink]="[ '/editCorrespondant' ]" routerLinkActive="active">Ajouter correspondant</button>
 </div>
