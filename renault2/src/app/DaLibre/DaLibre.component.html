@@ -1,0 +1,156 @@
+<div class="container-fluid" class="text-center">
+    <br>
+    <h1>Liste des demandes d'achats</h1>
+    <table class="table table-striped shadow">
+      <thead>
+    <tr>
+      <th>ID</th>
+      <th>Statut</th>
+      <th>Client</th>
+      <th>Correspondant</th>
+      <th>Chef de projet</th>
+      <th>Specialiste</th>
+      <th>Pilote_DA</th>
+      <th>descrition_besoin</th>
+      <th>devis_propose</th>
+      <th>direction_exploitant</th>
+      <th>service_exploitant</th>
+      <th>site_utilisation</th>
+      <th>commentaire</th>
+      <th>version</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngIf="!auth.forCorrespondant()">
+    <ng-container *ngFor="let da of das">
+      <ng-container *ngIf="da.correspondant == null">
+      
+    
+    <tr *ngIf="da.statut == 'Verification_1'">
+  
+  <td>{{da.id}}</td>
+  <td>{{da.statut}}</td>
+  <td *ngIf="da.client !== null">{{da.client.prenom}}&nbsp;{{da.client.nom}}</td>
+  <td *ngIf="da.client ===null">N/A</td>
+  <td *ngIf="da.correspondant !== null">{{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</td>
+  <td *ngIf="da.correspondant ===null">N/A</td>
+  <td *ngIf="da.cdp !== null">{{da.cdp.prenom}}&nbsp;{{da.cdp.nom}}</td>
+  <td *ngIf="da.cdp ===null">N/A</td>
+  <td *ngIf="da.specialiste !== null">{{da.specialiste.prenom}}&nbsp;{{da.specialiste.nom}}</td>
+  <td *ngIf="da.specialiste ===null">N/A</td>
+  <td *ngIf="da.pilote_da !== null">{{da.pilote_da.prenom}}&nbsp;{{da.pilote_da.nom}}</td>
+  <td *ngIf="da.pilote_da ===null">N/A</td>
+  <td>{{da.description_du_besoin}}</td>
+  <td>{{da.devis_propose}}</td>
+  <td>{{da.direction_exploitant}}</td>
+  <td>{{da.service_exploitant}}</td>
+  <td>{{da.site_utilisation}}</td>
+  <td>{{da.zone_commentaire}}</td>
+  <td>{{da.version}}</td>
+  <td><button class="btn btn-warning shadow" (click)="daCorrespondant(da)">Selectionner</button></td>
+  <td><button class="btn btn-danger shadow">X</button></td>  
+  </tr>
+  </ng-container>
+  </ng-container>
+  </tbody>
+  <tbody *ngIf="!auth.forCdp()">
+      <ng-container *ngFor="let da of das">
+  
+        <ng-container *ngIf="da.cdp == null">
+        
+      
+      <tr *ngIf="da.statut == 'Validation_1'">
+    
+    <td>{{da.id}}</td>
+    <td>{{da.statut}}</td>
+    <td *ngIf="da.client !== null">{{da.client.prenom}}&nbsp;{{da.client.nom}}</td>
+    <td *ngIf="da.client ===null">N/A</td>
+    <td *ngIf="da.correspondant !== null">{{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</td>
+    <td *ngIf="da.correspondant ===null">N/A</td>
+    <td *ngIf="da.cdp !== null">{{da.cdp.prenom}}&nbsp;{{da.cdp.nom}}</td>
+    <td *ngIf="da.cdp ===null">N/A</td>
+    <td *ngIf="da.specialiste !== null">{{da.specialiste.prenom}}&nbsp;{{da.specialiste.nom}}</td>
+    <td *ngIf="da.specialiste ===null">N/A</td>
+    <td *ngIf="da.pilote_da !== null">{{da.pilote_da.prenom}}&nbsp;{{da.pilote_da.nom}}</td>
+    <td *ngIf="da.pilote_da ===null">N/A</td>
+    <td>{{da.description_du_besoin}}</td>
+    <td>{{da.devis_propose}}</td>
+    <td>{{da.direction_exploitant}}</td>
+    <td>{{da.service_exploitant}}</td>
+    <td>{{da.site_utilisation}}</td>
+    <td>{{da.zone_commentaire}}</td>
+    <td>{{da.version}}</td>
+    <td><button class="btn btn-warning shadow" (click)="daCdp(da)"  >Selectionner</button></td>
+    <td><button class="btn btn-danger shadow">X</button></td>  
+    </tr>
+    </ng-container>
+  </ng-container>
+    </tbody>
+    <tbody *ngIf="!auth.forSpecialiste()">
+        <ng-container *ngFor="let da of das">
+          <ng-container *ngIf="da.specialiste == null">
+          
+        
+        <tr *ngIf="da.statut == 'Verification_2'">
+      
+      <td>{{da.id}}</td>
+      <td>{{da.statut}}</td>
+      <td *ngIf="da.client !== null">{{da.client.prenom}}&nbsp;{{da.client.nom}}</td>
+      <td *ngIf="da.client ===null">N/A</td>
+      <td *ngIf="da.correspondant !== null">{{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</td>
+      <td *ngIf="da.correspondant ===null">N/A</td>
+      <td *ngIf="da.cdp !== null">{{da.cdp.prenom}}&nbsp;{{da.cdp.nom}}</td>
+      <td *ngIf="da.cdp ===null">N/A</td>
+      <td *ngIf="da.specialiste !== null">{{da.specialiste.prenom}}&nbsp;{{da.specialiste.nom}}</td>
+      <td *ngIf="da.specialiste ===null">N/A</td>
+      <td *ngIf="da.pilote_da !== null">{{da.pilote_da.prenom}}&nbsp;{{da.pilote_da.nom}}</td>
+      <td *ngIf="da.pilote_da ===null">N/A</td>
+      <td>{{da.description_du_besoin}}</td>
+      <td>{{da.devis_propose}}</td>
+      <td>{{da.direction_exploitant}}</td>
+      <td>{{da.service_exploitant}}</td>
+      <td>{{da.site_utilisation}}</td>
+      <td>{{da.zone_commentaire}}</td>
+      <td>{{da.version}}</td>
+      <td><button class="btn btn-warning shadow" (click)="daSpecialiste(da)" >Selectionner</button></td>
+      <td><button class="btn btn-danger shadow">X</button></td>  
+      </tr>
+      </ng-container>
+    </ng-container>
+      </tbody>
+  <tbody *ngIf="!auth.forPilote_da()">
+      <ng-container *ngFor="let da of das">
+        <ng-container *ngIf="da.pilote_da == null">
+        
+      
+      <tr *ngIf="da.statut == 'Validation_2'">
+    
+    <td>{{da.id}}</td>
+    <td>{{da.statut}}</td>
+    <td *ngIf="da.client !== null">{{da.client.prenom}}&nbsp;{{da.client.nom}}</td>
+    <td *ngIf="da.client ===null">N/A</td>
+    <td *ngIf="da.correspondant !== null">{{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</td>
+    <td *ngIf="da.correspondant ===null">N/A</td>
+    <td *ngIf="da.cdp !== null">{{da.cdp.prenom}}&nbsp;{{da.cdp.nom}}</td>
+    <td *ngIf="da.cdp ===null">N/A</td>
+    <td *ngIf="da.specialiste !== null">{{da.specialiste.prenom}}&nbsp;{{da.specialiste.nom}}</td>
+    <td *ngIf="da.specialiste ===null">N/A</td>
+    <td *ngIf="da.pilote_da !== null">{{da.pilote_da.prenom}}&nbsp;{{da.pilote_da.nom}}</td>
+    <td *ngIf="da.pilote_da ===null">N/A</td>
+    <td>{{da.description_du_besoin}}</td>
+    <td>{{da.devis_propose}}</td>
+    <td>{{da.direction_exploitant}}</td>
+    <td>{{da.service_exploitant}}</td>
+    <td>{{da.site_utilisation}}</td>
+    <td>{{da.zone_commentaire}}</td>
+    <td>{{da.version}}</td>
+    
+    <td><button class="btn btn-warning shadow" (click)="daPilote_da(da)"  >Selectionner</button></td>
+    <td><button class="btn btn-danger shadow">X</button></td>  
+    </tr>
+    </ng-container>
+  </ng-container>
+    </tbody>
+  </table>
+  </div>

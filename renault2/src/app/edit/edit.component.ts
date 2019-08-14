@@ -10,6 +10,7 @@ import { Pilote_Da } from '../Pilote_Da';
 import { Cdp } from '../Cdp';
 import { UserService } from '../User.service';
 import { AuthenticateUserService } from '../AuthenticateUser.service';
+import { Statut } from '../Statut.enum';
 
 
 
@@ -28,7 +29,7 @@ export class EditComponent implements OnInit {
   private _correspondants: Correspondant[];
   private _pilote_das: Pilote_Da[];
 
-  constructor(private daService: DaService, private router: Router, private userService: UserService, private auth: AuthenticateUserService) { }
+  constructor(private daService: DaService, private router: Router, private userService: UserService, public auth: AuthenticateUserService) { }
 
 
   ngOnInit() {
@@ -65,12 +66,16 @@ export class EditComponent implements OnInit {
 
   public annuler() {
     this.daService.id = null;
-    this.router.navigate(['home'])
+    this.router.navigate(['mesDa'])
   }
 
   public save() {
-    console.log(this.da);
-    console.log(this._da);
+    if (this.da.statut == null){
+      this.da.statut = Statut.Creation;
+    }
+    if (this.da.client == null){
+      this.da.client = this.auth.token;
+    }
     this.daService.save(this._da).subscribe(res =>{
       this.daService.id = null,
       this.router.navigate(['mesDa'])
@@ -146,7 +151,7 @@ export class EditComponent implements OnInit {
   public forPilote_da(){
     var a = true;
     this.auth.token.roles.forEach(e => {
-      if (e == 'ROLE_DA' || e == 'ROLE_ADMIN'){
+      if (e == 'ROLE_PILOTEDA' || e == 'ROLE_ADMIN'){
         a = false;
       }
     });
@@ -163,6 +168,41 @@ export class EditComponent implements OnInit {
     return a;
   }
 
+  public goToCreation(){
+    this._da.statut = Statut.Creation;
+    this.save();
+  }
+
+  public goToVerification_1(){
+    this._da.client = this.auth.token;
+    this._da.statut = Statut.Verification_1;
+    this.save();
+  }
+
+  public goBackToVerification_1(){
+    this._da.statut = Statut.Verification_1;
+    this.save();
+  }
+
+  public goToValidation_1(){
+    this._da.statut = Statut.Validation_1;
+    this.save();
+  }
+
+  public goToVerification_2(){
+    this._da.statut = Statut.Verification_2;
+    this.save();
+  }
+
+  public goToValidation_2(){
+    this._da.statut = Statut.Validation_2;
+    this.save();
+  }
+
+ public goToTerminee() {
+  this._da.statut = Statut.Terminee;
+  this.save();
+ }
 
   get da(): Da {
     return this._da;

@@ -1,11 +1,13 @@
 
-    <div class="container-fluid">
-    <nav class="navbar rounded-lg shadow">
+
+    <nav *ngIf="auth.token != null" class="navbar rounded-lg shadow">
         <a class="navbar-brand" [routerLink]="[ '/home' ]" routerLinkActive="active"><img
                 src="../assets/images/image renault.jpg" alt="Home" id="logo" width="120px" height="40px"></a>
         <a class="navbar-toggler btn btn-default" [routerLink]="[ '/mesDa' ]" routerLinkActive="active">Mes demandes
             d'achats</a>
-        <div class="dropdown">
+            <a *ngIf="auth.forClient()" class="navbar-toggler btn btn-default" [routerLink]="[ '/daLibre' ]" routerLinkActive="active">DA Libres</a>
+            <a *ngIf="!auth.forClient()" class="navbar-toggler btn btn-default" [routerLink]="[ '/edit' ]" routerLinkActive="active">Créer une Demande d'achat</a>
+        <div *ngIf="!auth.forAdmin()" class="dropdown">
             <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Demandes d'achats
@@ -18,7 +20,7 @@
                         routerLinkActive="active">Créer une nouvelle DA</a></li>
             </ul>
         </div>
-        <div class="dropdown">
+        <div *ngIf="!auth.forAdmin()" class="dropdown">
             <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Listes des utilisateurs
@@ -49,4 +51,3 @@
     <div *ngIf="this.auth.token != null">
         {{this.auth.token.roles}}
     </div>
-</div>

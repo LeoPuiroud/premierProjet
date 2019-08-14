@@ -48,6 +48,12 @@ public MesDa(): Observable<any>{
 return this.http.get(this.url + '/da' + '/' + this.auth.token.roles[0].substring(5).toLowerCase() + '/' + this.auth.token.id);
 }
 
+public daParStatut(): Observable<any>{
+  console.log(this.auth.cheminListDa());
+  
+  return this.http.get(this.url + '/da' + '/' + this.auth.cheminListDa());
+}
+
 
 
 get id(): number {

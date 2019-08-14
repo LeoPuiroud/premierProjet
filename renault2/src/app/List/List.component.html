@@ -5,6 +5,7 @@
     <thead>
   <tr>
     <th>ID</th>
+    <th>Statut</th>
     <th>Client</th>
     <th>Correspondant</th>
     <th>Chef de projet</th>
@@ -25,6 +26,7 @@
   <tr *ngFor="let da of das">
 
 <td>{{da.id}}</td>
+<td>{{da.statut}}</td>
 <td *ngIf="da.client !== null">{{da.client.prenom}}&nbsp;{{da.client.nom}}</td>
 <td *ngIf="da.client ===null">N/A</td>
 <td *ngIf="da.correspondant !== null">{{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</td>

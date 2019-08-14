@@ -118,6 +118,9 @@ public class DaRestController {
 						(da.getSite_utilisation() != null ? da.getSite_utilisation() : daEnBase.getSite_utilisation()));
 				daEnBase.setZone_commentaire(
 						(da.getZone_commentaire() != null ? da.getZone_commentaire() : daEnBase.getZone_commentaire()));
+				daEnBase.setStatut(
+						(da.getStatut() != null ? da.getStatut() : daEnBase.getStatut()));
+				daEnBase.setRenvoyer(da.getRenvoyer());
 				daRepository.save(daEnBase);
 				return new ResponseEntity<Da>(HttpStatus.OK);
 
@@ -161,4 +164,9 @@ public class DaRestController {
 		}
 		
 	}
+	
+//	@GetMapping("/verification_1/{statut}")
+//	public ResponseEntity<List<Da>> statutVerification_1(@PathVariable(name="statut") Integer statut) {
+//		return new ResponseEntity<List<Da>>(daRepository.findListDaWithAllUserByStatut(statut).get(), HttpStatus.OK);
+//	}
 }

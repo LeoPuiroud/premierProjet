@@ -28,4 +28,8 @@ public interface DaRepository extends JpaRepository<Da, Integer>{
 	
 	@Query("select d from Da d left join fetch d.client left join fetch d.specialiste left join fetch d.cdp left join fetch d.correspondant left join fetch d.pilote_da")
 	Optional<List<Da>> findListDaWithAllUser();
+	
+//	@Query("select d from Da d left join fetch d.client left join fetch d.specialiste left join fetch d.cdp left join fetch d.correspondant left join fetch d.pilote_da where d.statut=0")
+//	Optional<List<Da>> findListDaCreationWithAll(@Param("statut")Integer statut);
+	
 }

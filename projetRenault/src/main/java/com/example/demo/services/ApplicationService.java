@@ -14,6 +14,7 @@ import com.example.demo.metier.Da;
 import com.example.demo.metier.Pilote_Da;
 import com.example.demo.metier.Roles;
 import com.example.demo.metier.Specialiste;
+import com.example.demo.metier.Statut;
 import com.example.demo.metier.User;
 import com.example.demo.repository.CdpRepository;
 import com.example.demo.repository.ClientRepository;
@@ -52,7 +53,7 @@ public class ApplicationService implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		test1();
+		test2();
 	}
 	
 		public void test1() {
@@ -105,20 +106,32 @@ public class ApplicationService implements CommandLineRunner {
 			demande1.setCorrespondant(corres1);
 			demande1.setPilote_da(pda);
 			demande1.setSpecialiste(spe);
-			demande1.setDescription_du_besoin("besoin de stuff");
-			demande1.setService_exploitant("service des douanes");
+			demande1.setDescription_du_besoin("besoin de...");
+			demande1.setService_exploitant("service A");
 			demande1.setDevis_propose("50000€");
-			demande1.setDirection_exploitant("Doc Pouzet");
+			demande1.setDirection_exploitant("toto");
 			demande1.setSite_utilisation("Paris");
 			demande1.setZone_commentaire("nope");
+			demande1.setStatut(Statut.Creation);
 			daRepository.save(demande1);
 			Da demande2 = new Da();
 			demande2.setClient(c2);
+			demande2.setStatut(Statut.Verification_1);
 			daRepository.save(demande2);
 			
 			
-			System.out.println("lala");
-			
+			System.out.println("lala");		
+		}
+		
+		public void test2(){
+			Cdp c = new Cdp();
+			c.setPrenom("admin");
+			c.setPassword(passwordencoder.encode("admin"));
+			c.setUsername("admin");
+			c.setNom("nomadmin");
+			c.addRoles(Roles.ROLE_ADMIN);
+			cdpRepository.save(c);
+			System.out.println("test2");
 			
 		}
 

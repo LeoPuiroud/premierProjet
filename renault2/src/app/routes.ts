@@ -15,6 +15,7 @@ import { EditPilote_daComponent } from './EditPilote_da/EditPilote_da.component'
 import { LoginComponent } from './Login/Login.component';
 import { MesDaComponent } from './MesDa/MesDa.component';
 import { AuthenticationNeededComponent } from './AuthenticationNeeded/AuthenticationNeeded.component';
+import { DaLibreComponent } from './DaLibre/DaLibre.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -32,6 +33,7 @@ export const routes: Routes = [
   {path: 'editPilote_da', component: EditPilote_daComponent},
   {path: 'login', component: LoginComponent},
   {path: 'mesDa', component: MesDaComponent},
-  {path: 'needAuth', component: AuthenticationNeededComponent}
+  {path: 'needAuth', component: AuthenticationNeededComponent},
+  {path: 'daLibre', component: DaLibreComponent}
 ];
 

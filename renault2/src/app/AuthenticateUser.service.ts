@@ -76,12 +76,112 @@ export class AuthenticateUserService {
   }
 
   public checkRole(role: Roles) {
+    var a = true
     this._token.roles.forEach(r => {
       if (r == role) {
-        return true;
+        a = false
       }
     })
+    return a;
   }
+
+  
+  public forClient(){
+    var a = true;
+    if (this.token != null) {
+    this._token.roles.forEach(e => {
+      if (e == 'ROLE_CLIENT'|| e == 'ROLE_ADMIN'){
+        a = false;
+      }
+    });
+    }
+    return a;
+  }
+
+  public forCdp(){
+    var a = true;
+    if (this.token != null) {
+    this._token.roles.forEach(e => {
+      if (e == 'ROLE_CDP' || e == 'ROLE_ADMIN'){
+        a = false;
+      }
+    });
+  }
+    return a;
+  }
+  public forCorrespondant(){
+    var a = true;
+    if (this.token != null) {
+    this._token.roles.forEach(e => {
+      if (e == 'ROLE_CORRESPONDANT' || e == 'ROLE_ADMIN'){
+        a = false;
+      }
+    });
+  }
+    return a;
+  }
+
+  public forSpecialiste(){
+    var a = true;
+    if (this.token != null) {
+    this._token.roles.forEach(e => {
+      if (e == 'ROLE_SPECIALISTE' || e == 'ROLE_ADMIN'){
+        a = false;
+      }
+    });
+  }
+    return a;
+  }
+
+  public forPilote_da(){
+    var a = true;
+    if (this.token != null) {
+    this._token.roles.forEach(e => {
+      if (e == 'ROLE_PILOTEDA' || e == 'ROLE_ADMIN'){
+        a = false;
+      }
+    });
+  }
+    return a;
+  }
+
+  public forAdmin(){
+    var a = true;
+    if (this.token != null) {
+    this._token.roles.forEach(e => {
+      if (e == 'ROLE_ADMIN'){
+        a = false;
+      }
+    });
+  }
+    return a;
+  }
+
+  //methode pour pouvoir afficher le DA correspondantes dans MesDa les /nombres permettent d'atteindre les roles dans la BDD qui sont stocké par chiffre
+  public cheminListDa(){
+    var a;
+    this._token.roles.forEach(r => {
+      
+      if (r == 'ROLE_CORRESPONDANT'){
+        a = 'verification_1/1'
+      }
+      if (r == 'ROLE_CDP'){
+        a = 'validation_1/é'
+      }
+      if (r == 'ROLE_SPECIALISTE'){
+        a = 'verification_2/3'
+      }
+      if (r == 'ROLE_CDP'){
+        a = 'validation_2/4'
+      }
+      if (r == 'ROLE_PILOTEDA'){
+        a = 'realisation/5'
+      }
+      
+    });
+    return a;
+  }
+
 
   get token(): any {
     return this._token;

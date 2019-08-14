@@ -3,6 +3,7 @@ import { Cdp } from './Cdp';
 import { Pilote_Da } from './Pilote_Da';
 import { Specialiste } from './Specialiste';
 import { Correspondant } from './Correspondant';
+import { Statut } from './Statut.enum';
 
 export class Da {
 
@@ -21,7 +22,9 @@ export class Da {
     public site_utilisation?: string,
     public validation_du_besoin?: boolean,
     public zone_commentaire?: string,
-    public version?: number
+    public version?: number,
+    public statut?: Statut,
+    public renvoyer?: Statut
   ) { }
 
   // get id(): number {

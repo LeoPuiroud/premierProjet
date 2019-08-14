@@ -49,6 +49,10 @@ public class Da {
 	private String devis_propose;
 	@JsonView(JsonViews.Common.class)
 	private String zone_commentaire;
+	@JsonView(JsonViews.Common.class)
+	private Statut statut;
+	@JsonView(JsonViews.Common.class)
+	private Statut renvoyer;
 	
 	
 	
@@ -66,6 +70,30 @@ public class Da {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+
+
+	public Statut getRenvoyer() {
+		return renvoyer;
+	}
+
+
+
+	public void setRenvoyer(Statut renvoyer) {
+		this.renvoyer = renvoyer;
+	}
+
+
+
+	public Statut getStatut() {
+		return statut;
+	}
+
+
+
+	public void setStatut(Statut statut) {
+		this.statut = statut;
 	}
 
 
