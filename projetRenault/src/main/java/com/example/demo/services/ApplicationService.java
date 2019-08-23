@@ -53,7 +53,7 @@ public class ApplicationService implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		test2();
+		test1();
 	}
 	
 		public void test1() {
@@ -102,16 +102,12 @@ public class ApplicationService implements CommandLineRunner {
 			pilote_DaRepository.save(pda);
 			Da demande1 = new Da();
 			demande1.setClient(c2);
-			demande1.setCdp(cdp1);
-			demande1.setCorrespondant(corres1);
-			demande1.setPilote_da(pda);
-			demande1.setSpecialiste(spe);
 			demande1.setDescription_du_besoin("besoin de...");
 			demande1.setService_exploitant("service A");
-			demande1.setDevis_propose("50000€");
-			demande1.setDirection_exploitant("toto");
+			demande1.setDevis_propose("500€");
+			demande1.setDirection_exploitant("Direction technique");
 			demande1.setSite_utilisation("Paris");
-			demande1.setZone_commentaire("nope");
+			demande1.setZone_commentaire("Commentaires");
 			demande1.setStatut(Statut.Creation);
 			daRepository.save(demande1);
 			Da demande2 = new Da();

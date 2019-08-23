@@ -67,11 +67,11 @@ export class AuthenticateUserService {
       else {
         console.log(btoa(user.password))
         console.log(res.password);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/needAuth']);
       }
     }),
       err => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/needAuth']);
       });
   }
 
@@ -90,7 +90,7 @@ export class AuthenticateUserService {
     var a = true;
     if (this.token != null) {
     this._token.roles.forEach(e => {
-      if (e == 'ROLE_CLIENT'|| e == 'ROLE_ADMIN'){
+      if (e == 'ROLE_CLIENT'){
         a = false;
       }
     });
@@ -102,7 +102,7 @@ export class AuthenticateUserService {
     var a = true;
     if (this.token != null) {
     this._token.roles.forEach(e => {
-      if (e == 'ROLE_CDP' || e == 'ROLE_ADMIN'){
+      if (e == 'ROLE_CDP'){
         a = false;
       }
     });
@@ -113,7 +113,7 @@ export class AuthenticateUserService {
     var a = true;
     if (this.token != null) {
     this._token.roles.forEach(e => {
-      if (e == 'ROLE_CORRESPONDANT' || e == 'ROLE_ADMIN'){
+      if (e == 'ROLE_CORRESPONDANT'){
         a = false;
       }
     });
@@ -125,7 +125,7 @@ export class AuthenticateUserService {
     var a = true;
     if (this.token != null) {
     this._token.roles.forEach(e => {
-      if (e == 'ROLE_SPECIALISTE' || e == 'ROLE_ADMIN'){
+      if (e == 'ROLE_SPECIALISTE'){
         a = false;
       }
     });
@@ -137,7 +137,7 @@ export class AuthenticateUserService {
     var a = true;
     if (this.token != null) {
     this._token.roles.forEach(e => {
-      if (e == 'ROLE_PILOTEDA' || e == 'ROLE_ADMIN'){
+      if (e == 'ROLE_PILOTEDA'){
         a = false;
       }
     });

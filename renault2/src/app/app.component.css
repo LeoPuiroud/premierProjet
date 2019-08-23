@@ -2,4 +2,8 @@ nav{
     background-color:lightblue;
 }
 
+#brand{
+    min-width: 10%;
+    max-width: 15%;
+}
 

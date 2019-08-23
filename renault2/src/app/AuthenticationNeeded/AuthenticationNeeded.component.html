@@ -1,4 +1,48 @@
-<div class="mt-5" >
+<nav *ngIf="auth.token != null" class="navbar rounded-lg shadow">
+    <a class="navbar-brand" [routerLink]="[ '/home' ]" routerLinkActive="active"><img
+            src="../assets/images/image renault.jpg" alt="Home" id="logo" width="120px" height="40px"></a>
+    <a class="navbar-toggler btn btn-default" [routerLink]="[ '/mesDa' ]" routerLinkActive="active">Mes demandes
+        d'achats</a>
+        <a *ngIf="auth.forClient()" class="navbar-toggler btn btn-default" [routerLink]="[ '/daLibre' ]" routerLinkActive="active">Demandes à traiter</a>
+        <a *ngIf="!auth.forClient()" class="navbar-toggler btn btn-default" [routerLink]="[ '/edit' ]" routerLinkActive="active">Créer une Demande d'achat</a>
+    <div *ngIf="!auth.forAdmin()" class="dropdown">
+        <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Demandes d'achats
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/list_da' ]"
+                    routerLinkActive="active">Liste des DA</a></li>
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/edit' ]"
+                    routerLinkActive="active">Créer une nouvelle DA</a></li>
+        </ul>
+    </div>
+    <div *ngIf="!auth.forAdmin()" class="dropdown">
+        <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Listes des utilisateurs
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listClient' ]"
+                    routerLinkActive="active">Liste des clients</a></li>
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listCorrespondant' ]"
+                    routerLinkActive="active">Liste des correspondants</a></li>
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listSpecialiste' ]"
+                    routerLinkActive="active">Liste des specialistes</a></li>
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listCdp' ]"
+                    routerLinkActive="active">Liste des chefs de projet</a></li>
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listPilote_da' ]"
+                    routerLinkActive="active">Liste des acheteurs</a></li>
+        </ul>
+    </div>
+    <a class="navbar-toggler btn btn-default" [routerLink]="[ '/login' ]" routerLinkActive="active">Login</a>
+</nav>
+
+<div class="mt-5 container-fluid" >
 <h2 class="text-center center">Sorry but it looks like you do not have the authorization to get to this page.</h2>
+<ng-container *ngIf="auth.token == null"> <button class="btn btn-success shadow" [routerLink]="[ '/login' ]" routerLinkActive="active">Login</button></ng-container>
+
 </div>
 

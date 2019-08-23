@@ -1,9 +1,9 @@
-<div *ngIf="!mesDa">Pas de demandes d'achats</div>
+<div *ngIf="!mesDa" style="font-size: 3vw">Pas de demandes d'achats</div>
 
 <div class="container-fluid" class="text-center" *ngIf="mesDa">
   <br>
-  <h1>Mes demandes d'achats</h1>
-  <table class="table table-striped shadow">
+  <h1 style="font-size: 3vw">Mes demandes d'achats</h1>
+  <table class="table table-responsive table-striped shadow mt-5">
     <thead>
       <tr>
         <th>ID</th>
@@ -27,41 +27,41 @@
     </thead>
     <tbody>
       <tr *ngFor="let da of mesDa">
+
+
+        <td>{{da.id}}</td>
         <td *ngIf="da.renvoyer != null">
           <ng-container>
-              Demande de modification à l'étape {{da.renvoyer}}
+            <span class="text-danger font-weight-bold"> Demande de modification à l'étape {{da.renvoyer}}</span>
           </ng-container>
           <ng-container *ngIf="!auth.forCorrespondant() && da.cdp == null">
-             <button class="btn btn-success shadow"
-              (click)="retourEtape(da)">accepter</button><br><button class="btn btn-danger shadow" (click)="refuserRetour(da)">refuser</button>
+            <button class="btn btn-success shadow" (click)="retourEtape(da)">accepter</button><br><button
+              class="btn btn-danger shadow" (click)="refuserRetour(da)">refuser</button>
           </ng-container>
           <ng-container *ngIf="!auth.forCdp() && da.specialiste == null">
-            <button class="btn btn-success shadow"
-              (click)="retourEtape(da)">accepter</button><br><button class="btn btn-danger shadow" (click)="refuserRetour(da)">refuser</button>
+            <button class="btn btn-success shadow" (click)="retourEtape(da)">accepter</button><br><button
+              class="btn btn-danger shadow" (click)="refuserRetour(da)">refuser</button>
           </ng-container>
           <ng-container *ngIf="!auth.forSpecialiste() && da.pilote_da == null">
-            <button class="btn btn-success shadow"
-              (click)="retourEtape(da)">accepter</button><br><button class="btn btn-danger shadow" (click)="refuserRetour(da)">refuser</button>
+            <button class="btn btn-success shadow" (click)="retourEtape(da)">accepter</button><br><button
+              class="btn btn-danger shadow" (click)="refuserRetour(da)">refuser</button>
           </ng-container>
           <ng-container *ngIf="!auth.forPilote_da() && da.statut != 'Terminee'">
-            <button class="btn btn-success shadow"
-              (click)="retourEtape(da)">accepter</button><br><button class="btn btn-danger shadow" (click)="refuserRetour(da)">refuser</button>
+            <button class="btn btn-success shadow" (click)="retourEtape(da)">accepter</button><br><button
+              class="btn btn-danger shadow" (click)="refuserRetour(da)">refuser</button>
           </ng-container>
-
-
         </td>
-        <td>{{da.id}}</td>
-        <td>{{da.statut}}</td>
+        <td *ngIf="da.renvoyer == null">{{da.statut}}</td>
         <td *ngIf="da.client !== null">{{da.client.prenom}}&nbsp;{{da.client.nom}}</td>
-        <td *ngIf="da.client ===null">N/A</td>
+        <td *ngIf="da.client ===null"></td>
         <td *ngIf="da.correspondant !== null">{{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</td>
-        <td *ngIf="da.correspondant ===null">N/A</td>
+        <td *ngIf="da.correspondant ===null"></td>
         <td *ngIf="da.cdp !== null">{{da.cdp.prenom}}&nbsp;{{da.cdp.nom}}</td>
-        <td *ngIf="da.cdp ===null">N/A</td>
+        <td *ngIf="da.cdp ===null"></td>
         <td *ngIf="da.specialiste !== null">{{da.specialiste.prenom}}&nbsp;{{da.specialiste.nom}}</td>
-        <td *ngIf="da.specialiste ===null">N/A</td>
+        <td *ngIf="da.specialiste ===null"></td>
         <td *ngIf="da.pilote_da !== null">{{da.pilote_da.prenom}}&nbsp;{{da.pilote_da.nom}}</td>
-        <td *ngIf="da.pilote_da ===null">N/A</td>
+        <td *ngIf="da.pilote_da ===null"></td>
         <td>{{da.description_du_besoin}}</td>
         <td>{{da.devis_propose}}</td>
         <td>{{da.direction_exploitant}}</td>
@@ -69,28 +69,43 @@
         <td>{{da.site_utilisation}}</td>
         <td>{{da.zone_commentaire}}</td>
         <td>{{da.version}}</td>
-        <td *ngIf="!auth.forClient()"><button [disabled]="da.statut != 'Creation'" class="btn btn-warning"
-            (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active">Editer</button></td>
-        <td *ngIf="!auth.forCorrespondant()"><button [disabled]="da.statut != 'Verification_1'" class="btn btn-warning"
-            (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active">Editer</button></td>
-        <td *ngIf="!auth.forCdp()"><button [disabled]="da.statut != 'Validation_1'" class="btn btn-warning"
-            (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active">Editer</button></td>
-        <td *ngIf="!auth.forSpecialiste()"><button [disabled]="da.statut != 'Verification_2'" class="btn btn-warning"
-            (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active">Editer</button></td>
-        <td *ngIf="!auth.forPilote_da()"><button [disabled]="da.statut != 'Validation_2'" class="btn btn-warning"
-            (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active">Editer</button></td>
 
-        <td *ngIf="!auth.forClient()"><button [disabled]="da.statut == 'Creation' || da.statut == 'Terminee'" class="btn btn-warning shadow"
-            (click)="renvoyerCreation(da)">Réediter</button></td>
-        <td *ngIf="!auth.forCorrespondant()"><button [disabled]="da.statut == 'Verification_1' || da.statut == 'Creation' || da.statut == 'Terminee'" class="btn btn-warning shadow"
-            (click)="renvoyerVerification_1(da)">Réediter</button></td>
-        <td *ngIf="!auth.forCdp()"><button [disabled]="da.statut == 'Validation_1' || da.statut == 'Verification_1' || da.statut == 'Creation' || da.statut == 'Terminee'" class="btn btn-warning shadow"
-            (click)="renvoyerValidation_1(da)">Réediter</button></td>
-        <td *ngIf="!auth.forSpecialiste()"><button [disabled]="da.statut == 'Verification_2' || da.statut == 'Terminee'" class="btn btn-warning shadow"
-            (click)="renvoyerVerification_2(da)">Réediter</button></td>
-        <td *ngIf="!auth.forPilote_da()"><button [disabled]="da.statut == 'Validation_2' || da.statut == 'Terminee'" class="btn btn-warning shadow"
-            (click)="renvoyerValidation_2(da)">Réediter</button></td>
+        <!-- container visible que pour les non admins car sinon les admins voieint tout les bouttons -->
+        <ng-container *ngIf="auth.forAdmin()">
 
+          <td *ngIf="!auth.forClient()"><button [disabled]="da.statut != 'Creation'" class="btn btn-warning"
+              (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active">Editer</button></td>
+          <td *ngIf="!auth.forCorrespondant()"><button [disabled]="da.statut != 'Verification_1'"
+              class="btn btn-warning" (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]"
+              routerLinkActive="active">Editer</button></td>
+          <td *ngIf="!auth.forCdp()"><button [disabled]="da.statut != 'Validation_1'" class="btn btn-warning"
+              (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active">Editer</button></td>
+          <td *ngIf="!auth.forSpecialiste()"><button [disabled]="da.statut != 'Verification_2'" class="btn btn-warning"
+              (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active">Editer</button></td>
+          <td *ngIf="!auth.forPilote_da()"><button [disabled]="da.statut != 'Validation_2'" class="btn btn-warning"
+              (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active">Editer</button></td>
+
+          <td *ngIf="!auth.forClient()"><button [disabled]="da.statut == 'Creation' || da.statut == 'Terminee'"
+              class="btn btn-warning shadow" (click)="renvoyerCreation(da)">Réediter</button></td>
+          <td *ngIf="!auth.forCorrespondant()"><button
+              [disabled]="da.statut == 'Verification_1' || da.statut == 'Creation' || da.statut == 'Terminee'"
+              class="btn btn-warning shadow" (click)="renvoyerVerification_1(da)">Réediter</button></td>
+          <td *ngIf="!auth.forCdp()"><button
+              [disabled]="da.statut == 'Validation_1' || da.statut == 'Verification_1' || da.statut == 'Creation' || da.statut == 'Terminee'"
+              class="btn btn-warning shadow" (click)="renvoyerValidation_1(da)">Réediter</button></td>
+          <td *ngIf="!auth.forSpecialiste()"><button
+              [disabled]="da.statut == 'Verification_2' || da.statut == 'Terminee'" class="btn btn-warning shadow"
+              (click)="renvoyerVerification_2(da)">Réediter</button></td>
+          <td *ngIf="!auth.forPilote_da()"><button [disabled]="da.statut == 'Validation_2' || da.statut == 'Terminee'"
+              class="btn btn-warning shadow" (click)="renvoyerValidation_2(da)">Réediter</button></td>
+        </ng-container>
+        <ng-container *ngIf="!auth.forAdmin()">
+          <td *ngIf="!auth.forCdp()"><button [disabled]="da.statut != 'Validation_1'" class="btn btn-warning"
+              (click)="selectedDA(da.id)" [routerLink]="[ '/edit' ]" routerLinkActive="active">Editer</button></td>
+          <td *ngIf="!auth.forCdp()"><button
+              [disabled]="da.statut == 'Validation_1' || da.statut == 'Verification_1' || da.statut == 'Creation' || da.statut == 'Terminee'"
+              class="btn btn-warning shadow" (click)="renvoyerValidation_1(da)">Réediter</button></td>
+        </ng-container>
       </tr>
     </tbody>
   </table>

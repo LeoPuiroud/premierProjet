@@ -112,7 +112,7 @@ export class EditComponent implements OnInit {
   public forClient(){
     var a = true;
     this.auth.token.roles.forEach(e => {
-      if (e == 'ROLE_CLIENT'|| e == 'ROLE_ADMIN'){
+      if (e == 'ROLE_CLIENT'|| e == 'ROLE_ADMIN' || e == 'ROLE_CDP' || e == 'ROLE_CORRESPONDANT'){
         a = false;
       }
     });
@@ -122,7 +122,7 @@ export class EditComponent implements OnInit {
   public forCdp(){
     var a = true;
     this.auth.token.roles.forEach(e => {
-      if (e == 'ROLE_CDP' || e == 'ROLE_ADMIN'){
+      if (e == 'ROLE_CDP' || e == 'ROLE_ADMIN' || e == 'ROLE_CDP'){
         a = false;
       }
     });
@@ -131,7 +131,7 @@ export class EditComponent implements OnInit {
   public forCorrespondant(){
     var a = true;
     this.auth.token.roles.forEach(e => {
-      if (e == 'ROLE_CORRESPONDANT' || e == 'ROLE_ADMIN'){
+      if (e == 'ROLE_CORRESPONDANT' || e == 'ROLE_ADMIN' || e == 'ROLE_CDP'){
         a = false;
       }
     });
@@ -141,7 +141,7 @@ export class EditComponent implements OnInit {
   public forSpecialiste(){
     var a = true;
     this.auth.token.roles.forEach(e => {
-      if (e == 'ROLE_SPECIALISTE' || e == 'ROLE_ADMIN'){
+      if (e == 'ROLE_SPECIALISTE' || e == 'ROLE_ADMIN' || e == 'ROLE_CDP'){
         a = false;
       }
     });
@@ -151,7 +151,7 @@ export class EditComponent implements OnInit {
   public forPilote_da(){
     var a = true;
     this.auth.token.roles.forEach(e => {
-      if (e == 'ROLE_PILOTEDA' || e == 'ROLE_ADMIN'){
+      if (e == 'ROLE_PILOTEDA' || e == 'ROLE_ADMIN' || e == 'ROLE_CDP'){
         a = false;
       }
     });

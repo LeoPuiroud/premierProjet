@@ -1,152 +1,180 @@
 <div class="container-fluid border shadow rounded" id="base">
 
-    <input type="hidden" [(ngModel)]="da.id">
-  
-    <!-- container ne se montrant que si admin -->
-    <ng-container *ngIf="!auth.forAdmin">
-  
-      <label>Client lié à la demande d'achat: <b>{{da.client.prenom}}&nbsp;{{da.client.nom}}</b></label>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text w-100">Client :</span>
-        </div>
-        <select [(ngModel)]="da.client" class="form-control shadow" [disabled]="forAdmin()">
-          <option [ngValue]="client" *ngFor="let client of clients">{{client.prenom}}&nbsp;{{client.nom}}</option>
-        </select>
-      </div>
-      <label>Correspondant lié à la demande d'achat:
-        <b>{{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</b></label>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text  w-100">Correspondant :</span>
-        </div>
-        <select [(ngModel)]="da.correspondant" class="form-control shadow" [disabled]="forAdmin()">
-          <option [ngValue]="correspondant" *ngFor="let correspondant of correspondants">
-            {{correspondant.prenom}}&nbsp;{{correspondant.nom}}</option>
-        </select>
-      </div>
-      <label>Chef de projet lié à la demande d'achat: <b>{{da.cdp.prenom}}&nbsp;{{da.cdp.nom}}</b></label>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text  w-100">Chef de projet :</span>
-        </div>
-        <select [(ngModel)]="da.cdp" class="form-control shadow" [disabled]="forAdmin()">
-          <option [ngValue]="cdp" *ngFor="let cdp of cdps">{{cdp.prenom}}&nbsp;{{cdp.nom}}</option>
-        </select>
-      </div>
-      <label>Specialiste lié à la demande d'achat: <b>{{da.specialiste.prenom}}&nbsp;{{da.specialiste.nom}}</b></label>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text  w-100">Specialiste :</span>
-        </div>
-        <select [(ngModel)]="da.specialiste" class="form-control shadow" [disabled]="forAdmin()">
-          <option [ngValue]="specialiste" *ngFor="let specialiste of specialistes">
-            {{specialiste.prenom}}&nbsp;{{specialiste.nom}}</option>
-        </select>
-      </div>
-      <label>Acheteur lié à la demande d'achat: <b>{{da.pilote_da.prenom}}&nbsp;{{da.pilote_da.nom}}</b></label>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text w-100">Acheteur :</span>
-        </div>
-        <select [(ngModel)]="da.pilote_da" class="form-control shadow" [disabled]="forAdmin()">
-          <option [ngValue]="pilote_da" *ngFor="let pilote_da of pilote_das">{{pilote_da.prenom}}&nbsp;{{pilote_da.nom}}
-          </option>
-        </select>
-      </div>
-    </ng-container>
-    <!-- container ne se montrant que si pas admin -->
-    <ng-container *ngIf="auth.forAdmin()">
-  <div class="inline float-left">Client: <b><span *ngIf="da.client != null">{{da.client.prenom}}&nbsp;{{da.client.nom}}</span></b></div>
-  <div class="inline float-right">Correspondant:<b><span *ngIf="da.correspondant != null"> {{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</span></b></div>
- <br>
-  <div class="inline float-left">Chef de projet:<b><span *ngIf="da.cdp != null"> {{da.cdp.prenom}}&nbsp;{{da.cdp.nom}}</span></b></div>
-  <div class="inline float-right">Specialiste: <b><span *ngIf="da.specialiste != null">{{da.specialiste.prenom}}&nbsp;{{da.specialiste.nom}}</span></b></div>
-  <br>
-  <div class="inline float-left">Acheteur:<b><span *ngIf="da.pilote_da != null"> {{da.pilote_da.prenom}}&nbsp;{{da.pilote_da.nom}}</span></b></div>
-    </ng-container>
-    
+  <input type="hidden" [(ngModel)]="da.id">
+
+  <!-- container ne se montrant que si admin -->
+  <ng-container *ngIf="!auth.forAdmin()">
+
+    <label>Client lié à la demande d'achat: <b>{{da.client.prenom}}&nbsp;{{da.client.nom}}</b></label>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text w-100">
-          Description du besoin :
-        </span>
+        <span class="input-group-text w-100">Client :</span>
       </div>
-      <input [disabled]="forClient()" [(ngModel)]="da.description_du_besoin" name="description_du_besoin"
-        class="form-control shadow">
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text w-100">
-          Devis proposé :
-        </span>
-      </div>
-      <input [(ngModel)]="da.devis_propose" name="devis_propose" class="form-control shadow">
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text w-100">
-          Direction exploitant:
-        </span>
-      </div>
-      <input [disabled]="forClient()" [(ngModel)]="da.direction_exploitant" name="direction_exploitant"
-        class="form-control shadow">
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text w-100">
-          Service exploitant :
-        </span>
-      </div>
-      <input [disabled]="forClient()" [(ngModel)]="da.service_exploitant" name="service_exploitant"
-        class="form-control shadow">
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text w-100">Site d'utilisation :</span>
-      </div>
-      <input [disabled]="forClient()" [(ngModel)]="da.site_utilisation" name="site_utilisation"
-        class="form-control shadow">
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text w-100">Validation du besoin :</span>
-      </div>
-      <select [(ngModel)]="da.validation_du_besoin" class="form-control shadow" [disabled]="forCdp()">
-        <option [ngValue]="true">Oui</option>
-        <option [ngValue]="false">Non</option>
+      <select [(ngModel)]="da.client" class="form-control shadow" [disabled]="forAdmin()">
+        <option [ngValue]="client" *ngFor="let client of clients">{{client.prenom}}&nbsp;{{client.nom}}</option>
       </select>
     </div>
+    <label>Correspondant lié à la demande d'achat:
+      <b>{{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</b></label>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text w-100">Commentaires :</span>
+        <span class="input-group-text  w-100">Correspondant :</span>
       </div>
-      <textarea [disabled]="forSpecialiste()" rows="5" [(ngModel)]="da.zone_commentaire" name="zone_commentaire"
-        class="form-control shadow"></textarea>
+      <select [(ngModel)]="da.correspondant" class="form-control shadow" [disabled]="forAdmin()">
+        <option [ngValue]="correspondant" *ngFor="let correspondant of correspondants">
+          {{correspondant.prenom}}&nbsp;{{correspondant.nom}}</option>
+      </select>
     </div>
-    <div class="content">
-      <button class="btn btn-primary shadow" (click)="save()">Enregistrer</button>&nbsp;<button
-        class="btn btn-warning shadow" (click)="annuler()">Annuler</button>
-      <button *ngIf="!auth.forClient()" class="btn btn-success shadow float-right"
-        (click)="goToVerification_1()">Envoyer</button>
-      <button *ngIf="!auth.forCorrespondant()" class="btn btn-success shadow float-right"
-        (click)="goToValidation_1()">Envoyer</button>
-      <button *ngIf="!auth.forCdp()" class="btn btn-success shadow float-right"
-        (click)="goToVerification_2()">Envoyer</button>
-      <button *ngIf="!auth.forSpecialiste()" class="btn btn-success shadow float-right"
-        (click)="goToValidation_2()">Envoyer</button>
-        <button *ngIf="!auth.forPilote_da()" class="btn btn-success shadow float-right"
-        (click)="goToTerminee()">Envoyer</button>
-        &nbsp;
-        <button *ngIf="!auth.forCorrespondant()" class="btn btn-success shadow float-right"
-        (click)="goToCreation()">Retrograder</button>
-        <!-- Method gobacktoverification_1 car sinon il y a positionnement d'un cdp dans l'attribut client de la da-->
-      <button *ngIf="!auth.forCdp()" class="btn btn-success shadow float-right"
-        (click)="goBackToVerification_1()">Retrograder</button>
-      <button *ngIf="!auth.forSpecialiste()" class="btn btn-success shadow float-right"
-        (click)="goToValidation_1()">Retrograder</button>
-        <button *ngIf="!auth.forPilote_da()" class="btn btn-success shadow float-right"
-        (click)="goToVerification_2()">Retrograder</button>
+    <label>Chef de projet lié à la demande d'achat: <b>{{da.cdp.prenom}}&nbsp;{{da.cdp.nom}}</b></label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text  w-100">Chef de projet :</span>
+      </div>
+      <select [(ngModel)]="da.cdp" class="form-control shadow" [disabled]="forAdmin()">
+        <option [ngValue]="cdp" *ngFor="let cdp of cdps">{{cdp.prenom}}&nbsp;{{cdp.nom}}</option>
+      </select>
     </div>
-  
+    <label>Specialiste lié à la demande d'achat: <b>{{da.specialiste.prenom}}&nbsp;{{da.specialiste.nom}}</b></label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text  w-100">Specialiste :</span>
+      </div>
+      <select [(ngModel)]="da.specialiste" class="form-control shadow" [disabled]="forAdmin()">
+        <option [ngValue]="specialiste" *ngFor="let specialiste of specialistes">
+          {{specialiste.prenom}}&nbsp;{{specialiste.nom}}</option>
+      </select>
+    </div>
+    <label>Acheteur lié à la demande d'achat: <b>{{da.pilote_da.prenom}}&nbsp;{{da.pilote_da.nom}}</b></label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text w-100">Acheteur :</span>
+      </div>
+      <select [(ngModel)]="da.pilote_da" class="form-control shadow" [disabled]="forAdmin()">
+        <option [ngValue]="pilote_da" *ngFor="let pilote_da of pilote_das">{{pilote_da.prenom}}&nbsp;{{pilote_da.nom}}
+        </option>
+      </select>
+    </div>
+  </ng-container>
+  <!-- container ne se montrant que si pas admin -->
+  <ng-container *ngIf="auth.forAdmin()">
+    <div>
+      <div class="left w-50 d-inline-block" style="font-size: 2vw">Client: <b><span *ngIf="da.client != null"
+            style="font-size: 2vw">{{da.client.prenom}}&nbsp;{{da.client.nom}}</span></b></div>
+      <div class="right w-50 d-inline-block" style="font-size: 2vw">Correspondant:<b><span *ngIf="da.correspondant != null"
+            style="font-size: 2vw">
+            {{da.correspondant.prenom}}&nbsp;{{da.correspondant.nom}}</span></b></div>
+      <br>
+      <div class="left w-50 d-inline-block" style="font-size: 2vw">Chef de projet:<b><span *ngIf="da.cdp != null"
+            style="font-size: 2vw">
+            {{da.cdp.prenom}}&nbsp;{{da.cdp.nom}}</span></b></div>
+      <div class="right w-50 d-inline-block" style="font-size: 2vw">Specialiste: <b><span *ngIf="da.specialiste != null"
+            style="font-size: 2vw">{{da.specialiste.prenom}}&nbsp;{{da.specialiste.nom}}</span></b></div>
+      <br>
+      <div class="left w-50 d-inline-block" style="font-size: 2vw">Acheteur:<b><span *ngIf="da.pilote_da != null"
+            style="font-size: 2vw">
+            {{da.pilote_da.prenom}}&nbsp;{{da.pilote_da.nom}}</span></b></div>
+      <div class="right w-50 d-inline-block" style="font-size: 2vw"> <span>vide</span> </div>
+      <br>
+    </div>
+  </ng-container>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend shadow">
+      <span class="input-group-text w-100 h-100" style="font-size: 1.3vw">
+        Description du besoin :
+      </span>
+    </div>
+    <input [disabled]="forClient()" [(ngModel)]="da.description_du_besoin" name="description_du_besoin"
+      class="form-control shadow h-auto">
   </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend shadow">
+      <span class="input-group-text w-100 h-100" style="font-size: 1.3vw">
+        Devis proposé :
+      </span>
+    </div>
+    <input [(ngModel)]="da.devis_propose" name="devis_propose" class="form-control shadow h-auto">
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend shadow">
+      <span class="input-group-text w-100 h-100" style="font-size: 1.3vw">
+        Direction exploitant:
+      </span>
+    </div>
+    <input [disabled]="forClient()" [(ngModel)]="da.direction_exploitant" name="direction_exploitant"
+      class="form-control shadow h-auto">
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend shadow">
+      <span class="input-group-text w-100 h-100" style="font-size: 1.3vw">
+        Service exploitant :
+      </span>
+    </div>
+    <input [disabled]="forClient()" [(ngModel)]="da.service_exploitant" name="service_exploitant"
+      class="form-control shadow h-auto">
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend shadow">
+      <span class="input-group-text w-100 h-100" style="font-size: 1.3vw">Site d'utilisation :</span>
+    </div>
+    <input [disabled]="forClient()" [(ngModel)]="da.site_utilisation" name="site_utilisation"
+      class="form-control shadow h-auto">
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend shadow">
+      <span class="input-group-text w-100 h-100" style="font-size: 1.3vw">Validation du besoin :</span>
+    </div>
+    <select [(ngModel)]="da.validation_du_besoin" class="form-control shadow h-auto" [disabled]="forCdp()">
+      <option [ngValue]="true">Validé</option>
+      <option [ngValue]="false">Non Validé</option>
+    </select>
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend shadow">
+      <span class="input-group-text w-100 h-100" style="font-size: 1.3vw">Commentaires :</span>
+    </div>
+    <textarea [disabled]="forSpecialiste()" rows="5" [(ngModel)]="da.zone_commentaire" name="zone_commentaire"
+      class="form-control shadow"></textarea>
+  </div>
+  <div *ngIf="auth.forAdmin()" class="content">
+    <button class="btn btn-primary shadow" (click)="save()">Enregistrer</button>&nbsp;<button
+      class="btn btn-warning shadow" (click)="annuler()">Annuler</button>
+    <button *ngIf="!auth.forClient()" class="btn btn-success shadow float-right"
+      (click)="goToVerification_1()">Envoyer</button>
+    <button *ngIf="!auth.forCorrespondant()" class="btn btn-success shadow float-right"
+      (click)="goToValidation_1()">Envoyer</button>
+    <button *ngIf="!auth.forCdp()" class="btn btn-success shadow float-right"
+      (click)="goToVerification_2()">Envoyer</button>
+    <button *ngIf="!auth.forSpecialiste()" class="btn btn-success shadow float-right"
+      (click)="goToValidation_2()">Envoyer</button>
+    <button *ngIf="!auth.forPilote_da()" class="btn btn-success shadow float-right"
+      (click)="goToTerminee()">Envoyer</button>
+    &nbsp;
+    <button *ngIf="!auth.forCorrespondant()" class="btn btn-success shadow float-right mr-1"
+      (click)="goToCreation()">Retrograder</button>
+    <!-- Method gobacktoverification_1 car sinon il y a positionnement d'un cdp dans l'attribut client de la da-->
+    <button *ngIf="!auth.forCdp()" class="btn btn-success shadow float-right mr-1"
+      (click)="goBackToVerification_1()">Retrograder</button>
+    <button *ngIf="!auth.forSpecialiste()" class="btn btn-success shadow float-right mr-1"
+      (click)="goToValidation_1()">Retrograder</button>
+    <button *ngIf="!auth.forPilote_da()" class="btn btn-success shadow float-right mr-1"
+      (click)="goToVerification_2()">Retrograder</button>
+  </div>
+  <div *ngIf="!auth.forAdmin()">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text w-100">Statut :</span>
+      </div>
+      <select [(ngModel)]="da.statut" class="form-control shadow">
+        <option [ngValue]="'Creation'">Création</option>
+        <option [ngValue]="'Verification_1'">Vérification_1</option>
+        <option [ngValue]="'Validation_1'">Validation_1</option>
+        <option [ngValue]="'Verification_2'">Vérification_2</option>
+        <option [ngValue]="'Validation_2'">Validation_2</option>
+        <option [ngValue]="'Terminee'">Terminée</option>
+      </select>
+    </div>
+    <button class="btn btn-primary shadow" (click)="save()">Enregistrer</button>&nbsp;<button
+      class="btn btn-warning shadow" (click)="annuler()">Annuler</button>
+  </div>
+</div>

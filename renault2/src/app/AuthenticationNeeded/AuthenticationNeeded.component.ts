@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticateUserService } from '../AuthenticateUser.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-AuthenticationNeeded',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationNeededComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth: AuthenticateUserService, private router: Router) { }
 
   ngOnInit() {
   }

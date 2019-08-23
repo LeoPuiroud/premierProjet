@@ -1,53 +1,74 @@
+<nav *ngIf="auth.token != null" class="navbar rounded-bottom shadow">
 
 
-    <nav *ngIf="auth.token != null" class="navbar rounded-lg shadow">
-        <a class="navbar-brand" [routerLink]="[ '/home' ]" routerLinkActive="active"><img
-                src="../assets/images/image renault.jpg" alt="Home" id="logo" width="120px" height="40px"></a>
-        <a class="navbar-toggler btn btn-default" [routerLink]="[ '/mesDa' ]" routerLinkActive="active">Mes demandes
-            d'achats</a>
-            <a *ngIf="auth.forClient()" class="navbar-toggler btn btn-default" [routerLink]="[ '/daLibre' ]" routerLinkActive="active">DA Libres</a>
-            <a *ngIf="!auth.forClient()" class="navbar-toggler btn btn-default" [routerLink]="[ '/edit' ]" routerLinkActive="active">Créer une Demande d'achat</a>
-        <div *ngIf="!auth.forAdmin()" class="dropdown">
-            <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Demandes d'achats
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/list_da' ]"
-                        routerLinkActive="active">Liste des DA</a></li>
-                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/edit' ]"
-                        routerLinkActive="active">Créer une nouvelle DA</a></li>
-            </ul>
-        </div>
-        <div *ngIf="!auth.forAdmin()" class="dropdown">
-            <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Listes des utilisateurs
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listClient' ]"
-                        routerLinkActive="active">Liste des clients</a></li>
-                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listCorrespondant' ]"
-                        routerLinkActive="active">Liste des correspondants</a></li>
-                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listSpecialiste' ]"
-                        routerLinkActive="active">Liste des specialistes</a></li>
-                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listCdp' ]"
-                        routerLinkActive="active">Liste des chefs de projet</a></li>
-                <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listPilote_da' ]"
-                        routerLinkActive="active">Liste des acheteurs</a></li>
-            </ul>
-        </div>
-        <a class="navbar-toggler btn btn-default" [routerLink]="[ '/login' ]" routerLinkActive="active">Login</a>
-        <a *ngIf="auth.token != null" class="navbar-toggler btn btn-default" [routerLink]="[ '/login' ]"
-            routerLinkActive="active" (click)="logout()">Logout</a>
-    </nav>
+    <a class="navbar-brand float-left" id="brand" [routerLink]="[ '/home' ]" routerLinkActive="active"><img
+            src="../assets/images/image renault.jpg" class="embed-responsive"></a>
+    <div class=" float-right w-75">
+        <h1 class="inline" style="font-size: 3vw">Application de gestion des demandes d'achats</h1>
+    </div>
 
+    <a class="navbar-toggler btn btn-default" [routerLink]="[ '/mesDa' ]" routerLinkActive="active"
+        style="font-size: 2vw">Mes demandes
+        d'achats</a>
+    <a *ngIf="auth.forClient()" class="navbar-toggler btn btn-default" [routerLink]="[ '/daLibre' ]"
+        routerLinkActive="active" style="font-size: 2vw">Demandes à traiter</a>
+    <ng-container *ngIf="auth.forAdmin()">
+        <a *ngIf="!auth.forClient()" class="navbar-toggler btn btn-default" [routerLink]="[ '/edit' ]"
+            routerLinkActive="active" style="font-size: 2vw">Créer une Demande d'achat</a>
+    </ng-container>
+    <div *ngIf="!auth.forAdmin()" class="dropdown">
+        <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="font-size: 2vw">
+            Gestion des demandes d'achats
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/list_da' ]" routerLinkActive="active">Liste
+                    des DA</a></li>
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/edit' ]" routerLinkActive="active">Créer
+                    une nouvelle DA</a></li>
+        </ul>
+    </div>
+    <div *ngIf="!auth.forAdmin()" class="dropdown">
+        <button class="btn btn-default dropdown-toggle navbar-toggler" type="button" id="dropdownMenu1"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="font-size: 2vw">
+            Gestion des utilisateurs
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listClient' ]"
+                    routerLinkActive="active">Liste des clients</a></li>
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listCorrespondant' ]"
+                    routerLinkActive="active">Liste des correspondants</a></li>
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listSpecialiste' ]"
+                    routerLinkActive="active">Liste des specialistes</a></li>
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listCdp' ]" routerLinkActive="active">Liste
+                    des chefs de projet</a></li>
+            <li><a class="dropdown-item btn btn-secondary" [routerLink]="[ '/listPilote_da' ]"
+                    routerLinkActive="active">Liste des acheteurs</a></li>
+        </ul>
+    </div>
+    <a *ngIf="auth.token == null" class="navbar-toggler btn btn-default" [routerLink]="[ '/login' ]"
+        routerLinkActive="active" style="font-size: 2vw">Login</a>
+    <a *ngIf="auth.token != null" class="navbar-toggler btn btn-default" [routerLink]="[ '/login' ]"
+        routerLinkActive="active" (click)="logout()" style="font-size: 2vw">Logout</a>
+</nav>
+
+<div>
+    <div *ngIf="auth.token != null" class=" d-inline-block border border-dark p-1 w-25 m-3 h-auto rounded shadow"
+        style="background-color: lightblue">
+        <div class="w-100 border-bottom" text-align="center" style="font-size: 2vw">Utilisateur connecté :</div>
+        <div class=" d-inline-block" style="font-size: 1.3vw">Prénom : </div>
+        <div class="d-inline-block" style="font-size: 1.3vw">&nbsp;<b>{{auth.token.prenom}}</b></div>
+        <br>
+        <div class=" d-inline-block" style="font-size: 1.3vw">Nom : </div>
+        <div class="d-inline-block" style="font-size: 1.3vw">&nbsp;<b>{{auth.token.nom}}</b></div>
+        <br>
+        <div class="d-inline-block" style="font-size: 1.3vw">Roles : </div>
+        <div *ngFor="let role of auth.token.roles" class="  d-inline-block" style="font-size: 1.3vw">
+            &nbsp;<b>{{role}}</b></div>
+    </div>
     <div>
         <router-outlet></router-outlet>
     </div>
-
-    <div *ngIf="this.auth.token != null">
-        {{this.auth.token.roles}}
-    </div>
+</div>
